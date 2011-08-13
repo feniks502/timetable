@@ -1,0 +1,228 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+
+
+body {
+	background-color: #fff;
+	color: #000;
+	font-family: Verdana, Trebuchet MS, sans-serif;
+	font-size: 1em;
+	line-height: 140%;
+	overflow-x: hidden;
+}
+
+#wrap {
+	width: 1000%;
+}
+
+.column {
+	border-left: #fff solid 1px;
+	border-right: #fff solid 1px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 2%;
+	margin-top: 2px;
+	float: left;
+	z-index: 50;
+}
+
+
+
+/*<------------------------------------------------------------------Headers-------------------->*/
+.header {
+	background-color: #008cba;
+	color: #fff;
+	font-size: 0.75em;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.5em;
+}
+/*<------------------------------------------------------------------End Headers---------------->*/
+
+
+
+/*<------------------------------------------------------------------Item list------------------>*/
+.items {
+	font-size: 0.75em;
+	list-style-type: none;
+	display: none;
+}
+
+.item {
+	background-color: #eee;
+	border-top: #555753 dashed 1px;
+	border-bottom: #555753 dashed 1px;
+}
+
+.link {
+	color: #000;
+	text-decoration: none;
+	padding: 0.5em;
+	display: block;
+}
+
+.link:hover {
+	background-color: #d3d7cf;
+}
+
+.simple:first-child {
+	margin-top: 10px;
+}
+
+.odd, .even, .elective {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.info {
+	border-top: #cfcfcf dashed 1px;
+	padding: 0px 0.5em;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.lecture small {
+	color: #999;
+	display: inline-block;
+}
+
+.seminar small {
+	color: #f55;
+	display: inline-block;
+}
+
+.elective small {
+	color: #40a1bf;
+	display: inline-block;
+}
+/*<------------------------------------------------------------------End Item list-------------->*/
+
+
+
+/*<------------------------------------------------------------------Scroll--------------------->*/
+#scrollLeft {
+	background-color: #008cba;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.5em;
+	position: absolute;
+	top: 35%;
+	left: 0;
+	display: none;
+	cursor: pointer;
+}
+
+#scrollRight {
+	background-color: #008cba;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	color: #fff;
+	font-size: 1em;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.5em;
+	position: absolute;
+	top: 35%;
+	right: 0;
+	cursor: pointer;
+}
+/*<------------------------------------------------------------------End Scroll----------------->*/
+
+
+
+/*<------------------------------------------------------------------AJAX area------------------>*/
+#shadow {
+	background: #000;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 99;
+	cursor: pointer;
+}
+
+
+
+
+#info {
+	background: #fff;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	min-width: 40%;
+	min-height: 70%;
+	padding: 1%;
+	position: fixed;
+	top: 10%;
+	left: 30%;
+	display: none;
+	z-index: 100;
+}
+/*<------------------------------------------------------------------End AJAX area-------------->*/
+
+
+
+/*<------------------------------------------------------------------Browser check-------------->*/
+.info_msg {
+	background-color: #008cba;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	color: #fff;
+	font-size: 0.75em;
+	line-height: 140%;
+	max-width: 30%;
+	padding: 5px;
+	position: absolute;
+	left: 0;
+	bottom: 10%;
+	display: none;
+	z-index: 1;
+}
+
+.info_msg a {
+	color: #003366;
+}
+/*<------------------------------------------------------------------End Browser check---------->*/
+
+
+
+/*<------------------------------------------------------------------Foooter-------------------->*/
+#footer {
+	color: #777;
+	font-size: 10px;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+/*<------------------------------------------------------------------End Footer----------------->*/
+

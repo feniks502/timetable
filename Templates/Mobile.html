@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="../js/main.js"></script>
+		<script type="text/javascript" src="./js/engine.js"></script>
+		<script type="text/javascript" src="./js/parser.js"></script>
+		<script type="text/javascript" src="./js/ajax.js"></script>
+
+		<title>Российская академия правосудия - расписание</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="./css/style.css" />
+	</head>
+	<body>
+
+		<div id="info"></div>
+
+
+	{% for column in columns %}
+		<div class="column">
+			<div class="header">{{ column.header }}</div>
+
+			<div class="items">
+		{% for item in column.items %}
+				<div class="item {{ item.class }}">
+					<a class="link" href="./?{{ item.href }}">{{ item.item }}<br></a>
+			{% if position == 'subjects' %}
+					<div class="info">
+						<div class="left">
+							<small>{{ item.begin }}-{{ item.end }}</small>
+						</div>
+						<div class="right">
+							<small>{{ item.auditory }} ауд.</small>
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+			{% endif %}
+				</div>
+			{% else%}
+				<div class="simple" style="padding: 0.75em;"><a>Элементы отсутствуют</a></div>
+		{% endfor %}
+			</div>
+		</div>
+		{% else %}
+		<div class="column">
+			<div class="header">Элементы отсутствуют</div>
+
+			<ul class="item_list">
+				<li class="simple" style="padding: 0.75em;">Элементы отсутствуют</li>
+			</ul>
+		</div>
+	{% endfor %}
+
+
+
+	<div class="info_msg" style="display: inherit;">
+		<div style="text-align: center;"><strong>Тестовый режим!</strong></div>
+		Просьба <a style="color: #036;" href="http://vkontakte.ru/mail.php?act=write&to=4938290" target="_blank">сообщать</a> обо всех странностях<br>
+		неровностях и неправильностях работы:))
+	</div>
+
+
+	<div id="footer">{{ copyright | raw }}</div>
+
+
+	</body>
+</html>

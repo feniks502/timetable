@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Engine istallation</title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../css/install.css" />
+	</head>
+
+
+
+	<body>
+
+		<form action="install.php" method="post">
+			<fieldset>
+				<legend>Параметры подключения</legend>
+
+				<table  cellspacing="1">
+					<tr>
+						<td class="key" valign="top">
+							Сервер базы данных:
+						</td>
+						<td class="value" valign="top">
+							<input type="text" name="host_name" value="localhost" onfocus="if (this.value == 'localhost') this.value = '';" onblur="if (this.value == '') this.value = 'localhost';">
+						</td>
+						<td class="explain" valign="top">
+							<small><em>Поумолчанию: "localhost".</em></small>
+						</td>
+					</tr>
+					<tr>
+						<td class="key" valign="top">
+							Пользователь базы данных:
+						</td>
+						<td class="value" valign="top">
+							<input type="text" name="user_name" value="root" onfocus="if (this.value == 'root') this.value = '';" onblur="if (this.value == '') this.value = 'root';">
+						</td>
+						<td class="explain" valign="top">
+							<small><em>Поумолчанию: "root".</em></small>
+						</td>
+					</tr>
+
+					<tr>
+						<td class="key" valign="top">
+							Имя базы данных:
+						</td>
+						<td class="value" valign="top">
+							<input type="text" name="db_name">
+						</td>
+						<td class="explain" valign="top">
+							<small><em>Если база данных не существует, она будет создана.</em></small>
+						</td>
+					</tr>
+					<tr>
+						<td class="key" valign="top">
+							Пароль базы данных:
+						</td>
+						<td class="value" valign="top">
+							<input type="password" name="user_password">
+						</td>
+						<td class="explain" valign="top">
+							<small><em>Если пароль не установлен, оставтье поле пустым.</em></small>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<input style="padding: 5px; margin-left: 10px;" type="submit" value="Установить">
+		</form>
+
+	</body>
+</html>

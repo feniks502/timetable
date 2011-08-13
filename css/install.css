@@ -1,0 +1,48 @@
+
+*	{
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	font-family: Verdana, Sans-serif;
+	font-size: 11pt;
+}
+
+fieldset {
+	width: 45%;
+	padding: 10px;
+	margin: 10px;
+}
+
+legend {
+	color: #0B55C4;
+}
+
+table {
+	border-collapse: separate;
+}
+
+.key {
+	background-color: #F6F6F6;
+	border-bottom: 1px solid #E9E9E9;
+	border-right: 1px solid #E9E9E9;
+	color: #5f5f5f;
+	text-align: right;
+	width: 250px;
+}
+
+.value{
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+}
+
+.explain {
+	background-color: #F6F6F6;
+	border-bottom: 1px solid #E9E9E9;
+	border-right: 1px solid #E9E9E9;
+	color: #5f5f5f;
+	width: 250px;
+	padding-left: 3px;
+}

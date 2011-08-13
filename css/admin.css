@@ -1,0 +1,63 @@
+
+#add_course {
+	cursor: pointer;
+}
+
+.add_group {
+	margin-top: 10px;
+}
+
+.add_subject {
+	cursor: pointer;
+}
+
+.item.add_subject {
+	margin-top: 10px;
+}
+
+.add_group:hover, .item.add_subject:hover {
+	background-color: #d3d7cf; 
+}
+
+.control {
+	border-top: #cfcfcf dashed 1px;
+}
+
+.control a {
+	font-size: smaller;
+	text-decoration: none;
+}
+
+.edit {
+	color: #008cba;
+	padding: 0px;
+	margin-left: 5px;
+	float: left;
+	cursor: pointer;
+}
+
+a.move_up {
+	color: #008cba;
+	font-size: 13px;
+	margin-left: 30px;
+	float: left;
+}
+
+a.move_down {
+	color: #008cba;
+	font-size: 13px;
+	margin-left: 13px;
+	float: left;
+}
+
+.delete {
+	color: #f55;
+	padding: 0px;
+	margin-right: 5px;
+	float: right;
+	cursor: pointer;
+}
+
+.edit:hover, .move_up:hover, .move_down:hover, .delete:hover {
+	text-decoration: underline;
+}

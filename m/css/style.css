@@ -1,0 +1,147 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+body {
+	background-color: #fff;
+	color: #000;
+	font-family: Verdana, Trebuchet MS, sans-serif;
+	font-size: 0.75em;
+}
+
+
+.column {
+	margin-top: 2px;
+}
+
+
+
+/*<------------------------------------------------------------------Headers-------------------->*/
+.header {
+	background-color: #008cba;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.75em;
+}
+/*<------------------------------------------------------------------End Headers---------------->*/
+
+
+
+/*<------------------------------------------------------------------Item list------------------>*/
+.items {
+	display: none;
+}
+
+
+.item {
+	background-color: #eee;
+	border-top: #555753 dashed 1px;
+	border-bottom: #555753 dashed 1px;
+}
+
+
+.item:last-child {
+	margin-bottom: 10px;
+}
+
+
+.link {
+	color: #000;
+	text-decoration: none;
+	padding: 0.75em;
+	display: block;
+}
+
+
+.simple:first-child {
+	margin-top: 10px;
+}
+
+.odd, .even, .elective {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.link:hover {
+	background-color: #d3d7cf;
+}
+
+.info {
+	border-top: #cfcfcf dashed 1px;
+	padding: 5px 0.75em;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.lecture small {
+	color: #999;
+	display: inline-block;
+}
+
+.seminar small {
+	color: #f55;
+	display: inline-block;
+}
+
+.elective small {
+	color: #40a1bf;
+	display: inline-block;
+}
+/*<------------------------------------------------------------------End Item list-------------->*/
+
+
+
+/*<------------------------------------------------------------------AJAX area------------------>*/
+#info {
+	background: #fff;
+	padding: 1%;
+	display: none;
+}
+/*<------------------------------------------------------------------End AJAX area-------------->*/
+
+
+
+/*<------------------------------------------------------------------Browser check-------------->*/
+.info_msg {
+	background-color: #008cba;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 10px;
+	color: #fff;
+	line-height: 140%;
+	max-width: 90%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	padding: 5px;
+}
+
+.info_msg a {
+	color: #003366;
+}
+/*<------------------------------------------------------------------End Browser check---------->*/
+
+
+
+/*<------------------------------------------------------------------Foooter-------------------->*/
+#footer {
+	color: #777;
+	font-size: 0.80em;
+	line-height: 220%;
+	text-align: center;
+	width: 100%;
+	margin-top: 20%;
+}
+/*<------------------------------------------------------------------End Footer----------------->*/
+
