@@ -49,23 +49,32 @@
 		{% endfor %}
 		</div>
 
-
-	<div class="info_msg" style="display: inherit;">
+	<div class="info_msg">
 		<div style="text-align: center;"><strong>Тестовый режим!</strong></div>
 		Просьба <a style="color: #036;" href="http://vkontakte.ru/mail.php?act=write&to=4938290" target="_blank">сообщать</a> обо всех странностях<br>
 		неровностях и неправильностях работы:))
 	</div>
 
+<!--[if gt IE 6]>
 	<div class="info_msg">
 		<div style="text-align: center;"><strong>Этот браузер не поддерживаеться!!!</strong></div>
-		Мы не гарантируем корректную работу ресурса с этим браузером и настоятельно рекомендуем бесплатно установить один из следующих браузеров
+		Мы не гарантируем корректную работу ресурса с этим браузером и настоятельно рекомендуем бесплатно установить один из следующих браузеров:
 		<a href="http://www.opera.com/browser/download/" target="blank">Opera</a> |
 		<a href="http://www.google.ru/chrome?hl=ru&brand=CHMI" target="blank">Chrome</a> |
 		<a href="http://www.mozilla-europe.org/ru/firefox/" target="blank">Firefox</a> |
-		<a href="http://www.apple.com/ru/safari/" target="blank">Safari</a>
+		<a href="http://www.apple.com/ru/safari/" target="blank">Safari</a>.
 	</div>
-
-
+<![endif]-->
+<!--[if lte IE 6]>
+	<div class="info_msg">
+		<div style="text-align: center;"><strong>Этот браузер не поддерживаеться!!!</strong></div>
+		Ваш браузер слишком устарел, он не соответсвтует современным Web-стандартам и не поддерживает новые технологии, используемые этим ресурсом. Для корректной работы мы настоятельно рекоммендуем бесплатно установить один из следующих браузеров:
+		<a href="http://www.opera.com/browser/download/" target="blank">Opera</a> |
+		<a href="http://www.google.ru/chrome?hl=ru&brand=CHMI" target="blank">Chrome</a> |
+		<a href="http://www.mozilla-europe.org/ru/firefox/" target="blank">Firefox</a> |
+		<a href="http://www.apple.com/ru/safari/" target="blank">Safari</a>.
+	</div>
+<![endif]-->
 
 	<div id="footer">{{ copyright | raw }}</div>
 

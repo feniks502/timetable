@@ -1,11 +1,3 @@
-function IE_version() {
-	if ($.browser.msie) {
-		$(".info_msg").css('width', '30%');
-		$(".info_msg:eq(1)").show();
-	}
-}
-
-
 function border_remove() {
 	$(".simple:not(.elective)").next(".simple:not(.elective)").css('border-top', 'none');
 
@@ -36,6 +28,7 @@ function subject_type() {
 	$(".odd .link").append('<small style="color: #999; float: right;">(нечет.)</small><div style="clear: both;"></div>');
 	$(".even .link").append('<small style="color: #999; float: right;">(чет.)</small><div style="clear: both;"></div>');
 }
+
 
 function pos() {
 	$(".info_msg").each(function () {
@@ -118,7 +111,6 @@ function scrollLeft() {
 
 
 $(document).ready(function () {
-	IE_version();
 	border_remove();
 	subject_type();
 	scrollShow();
