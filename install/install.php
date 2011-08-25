@@ -59,34 +59,39 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 	} else {
 		echo '<span style="color: green;">Создание таблиц (1 из 3)...</span><br><br>';
 		$sql = "CREATE TABLE `{$_POST['db_name']}`.`courses` (
-			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			`course_name` VARCHAR( 50 ) NOT NULL
 			) ENGINE = INNODB;";
 		mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище курсов не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
 
 		echo '<span style="color: green;">Создание таблиц (2 из 3)...</span><br><br>';
 		$sql = "CREATE TABLE `{$_POST['db_name']}`.`groups` (
-			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-			`sort` INT UNSIGNED NOT NULL ,
-			`course_id` INT UNSIGNED NOT NULL ,
+			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+			`sort` INT UNSIGNED NOT NULL,
+			`course_id` INT UNSIGNED NOT NULL,
 			`group_name` VARCHAR( 50 ) NOT NULL
 			) ENGINE = INNODB;";
 		mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище групп не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
 
 		echo '<span style="color: green;">Создание таблиц (3 из 3)...</span><br><br>';
                 $sql = "CREATE TABLE  `{$_POST['db_name']}`.`subjects` (
-			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-			`sort` INT UNSIGNED NOT NULL ,
-			`course_id` INT UNSIGNED NOT NULL ,
-			`group_id` INT UNSIGNED NOT NULL ,
-			`day_id` TINYINT( 1 ) UNSIGNED NOT NULL ,
-			`day` VARCHAR( 12 ) NOT NULL ,
-			`subject` VARCHAR( 100 ) NOT NULL ,
-			`type` VARCHAR( 16 ) NOT NULL ,
-			`lecturer` VARCHAR( 100 ) NOT NULL ,
-			`auditory` INT( 4 ) UNSIGNED NOT NULL ,
-			`begin_time` VARCHAR( 5 ) NOT NULL ,
-			`end_time` VARCHAR( 5 ) NOT NULL ,
+			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+			`sort` INT UNSIGNED NOT NULL,
+			`course_id` INT UNSIGNED NOT NULL,
+			`group_id` INT UNSIGNED NOT NULL,
+			`day_id` TINYINT( 1 ) UNSIGNED NOT NULL,
+			`h` BOOLEAN NOT NULL,
+			`day` VARCHAR( 12 ) NOT NULL,
+			`subject` VARCHAR( 100 ) NOT NULL,
+			`type` VARCHAR( 16 ) NOT NULL,
+			`lec1` VARCHAR( 100 ) NOT NULL,
+			`aud1` INT( 4 ) UNSIGNED NOT NULL,
+			`bt1` VARCHAR( 5 ) NOT NULL,
+			`et1` VARCHAR( 5 ) NOT NULL,
+			`lec2` VARCHAR( 100 ) NOT NULL,
+			`aud2` INT( 4 ) UNSIGNED NOT NULL,
+			`bt2` VARCHAR( 5 ) NOT NULL,
+			`et2` VARCHAR( 5 ) NOT NULL,
 			`home_work` TEXT NOT NULL
 			) ENGINE = INNODB;";
                 mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище предметов не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');

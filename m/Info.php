@@ -17,12 +17,12 @@ if (isset ($_POST['subject_id'])) {
 
 	switch ($Action) {
 		case 'load':
-			$info = mysql_fetch_assoc(mysql_query("SELECT `lecturer`, `auditory`, `begin_time`, `end_time`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+			$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
 
-			echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lecturer']}</div>
-				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['auditory']}</div>
-				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['begin_time']}</div>
-				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['end_time']}</div>
+			echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['aud1']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']}</div>
 				<span style=\"color: #f00;\">Домашнее задание:</span><br>
 				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['home_work']}</textarea>
 				<div>

@@ -144,25 +144,37 @@ switch ($Object) {
 						</td>
 					</tr>
 					<tr>
+						<td class="key">По подгруппам:</td>
+						<td class="value">
+							<input type="checkbox" name="sg">
+						</td>
+					</tr>
+					<tr>
 						<td class="key">Преподаватель:</td>
 						<td class="value">
-							<input type="text" size="50" maxlength="50" name="lecturer"><br>
+							<input type="text" size="50" maxlength="50" name="lec1"><br><div class="h">
+							<input type="text" size="50" maxlength="50" name="lec2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Аудитория №:</td>
-						<td class="value"><input type="text" size="4" maxlength="4" name="auditory"></td>
+						<td class="value">
+							<input type="text" size="4" maxlength="4" name="aud1"><br><div class="h">
+							<input type="text" size="4" maxlength="4" name="aud2"></div>
+						</td>
 					</tr>
 					<tr>
 						<td class="key">Начало:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="bth"> : <input type="text" size="2" maxlength="2" name="btm">
+							<input type="text" size="2" maxlength="2" name="bth1"> : <input type="text" size="2" maxlength="2" name="btm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="bth2"> : <input type="text" size="2" maxlength="2" name="btm2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Окончание:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="eth"> : <input type="text" size="2" maxlength="2" name="etm">
+							<input type="text" size="2" maxlength="2" name="eth1"> : <input type="text" size="2" maxlength="2" name="etm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="eth2"> : <input type="text" size="2" maxlength="2" name="etm2"></div>
 						</td>
 					</tr>
 					<tr>
@@ -185,11 +197,11 @@ switch ($Object) {
 				if (isset ($_POST['subject_id']) && is_numeric($_POST['subject_id'])) {
 					$subject_id = mysql_real_escape_string($_POST['subject_id']);
 
-					$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lecturer`, `auditory`, `begin_time`, `end_time` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
+					$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
 
 					$type = explode(' ', $row['type']);
-					$begin_time = explode(':', $row['begin_time']);
-					$end_time = explode(':', $row['end_time']);
+					$bt1 = explode(':', $row['bt1']);
+					$et1 = explode(':', $row['et1']);
 
 					echo '<form name="edit_subject">
 
@@ -260,34 +272,34 @@ switch ($Object) {
 					<tr>
 						<td class="key">Преподаватель:</td>
 						<td class="value">
-							<input type="text" size="50" maxlength="50" name="lecturer" value="';
-					echo $row['lecturer'];
+							<input type="text" size="50" maxlength="50" name="lec1" value="';
+					echo $row['lec1'];
 					echo '"><br>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Аудитория №:</td>
-						<td class="value"><input type="text" size="4" maxlength="4" name="auditory" value="';
-					echo $row['auditory'];
+						<td class="value"><input type="text" size="4" maxlength="4" name="aud1" value="';
+					echo $row['aud1'];
 					echo '"></td>
 					</tr>
 					<tr>
 						<td class="key">Начало:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="bth" value="';
-					echo $begin_time[0];
-					echo '"> : <input type="text" size="2" maxlength="2" name="btm" value="';
-					echo $begin_time[1];
+							<input type="text" size="2" maxlength="2" name="bth11" value="';
+					echo $bt1[0];
+					echo '"> : <input type="text" size="2" maxlength="2" name="btm1" value="';
+					echo $bt1[1];
 					echo '">
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Окончание:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="eth" value="';
-					echo $end_time[0];
-					echo '"> : <input type="text" size="2" maxlength="2" name="etm" value="';
-					echo $end_time[1];
+							<input type="text" size="2" maxlength="2" name="eth1" value="';
+					echo $et1[0];
+					echo '"> : <input type="text" size="2" maxlength="2" name="eth1" value="';
+					echo $et1[1];
 					echo '">
 						</td>
 					</tr>

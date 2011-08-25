@@ -12,7 +12,7 @@ foreach ($_POST as $Key => $Value) {
 
 $Object = isset ($_POST['object']) ? $_POST['object'] : null;
 $Action = isset ($_POST['action']) ? $_POST['action'] : null;
-var_dump();
+
 switch ($Object) {
 	case 'course':
 
@@ -163,13 +163,13 @@ switch ($Object) {
 					&&
 				    isset ($_POST['type_2']) && is_numeric($_POST['type_2'])
 					&&
-				    isset ($_POST['lecturer']) && $_POST['lecturer'] !== ''
+				    isset ($_POST['lec1']) && $_POST['lec1'] !== ''
 					&&
-				    isset ($_POST['auditory']) && is_numeric($_POST['auditory'])
+				    isset ($_POST['aud1']) && is_numeric($_POST['aud1'])
 					&&
-				    isset ($_POST['begin_time']) && $_POST['begin_time'] !== 'null'
+				    isset ($_POST['bt1']) && $_POST['bt1'] !== 'null'
 					&&
-				    isset ($_POST['end_time']) && $_POST['end_time'] !== 'null'
+				    isset ($_POST['et1']) && $_POST['et1'] !== 'null'
 					) {
 					$course_id = mysql_real_escape_string($_POST['course_id']);
 					$group_id = mysql_real_escape_string($_POST['group_id']);
@@ -177,10 +177,10 @@ switch ($Object) {
 					$subject = mysql_real_escape_string($_POST['subject']);
 					$type_1 = mysql_real_escape_string($_POST['type_1']);
 					$type_2 = mysql_real_escape_string($_POST['type_2']);
-					$lecturer = mysql_real_escape_string($_POST['lecturer']);
-					$auditory = mysql_real_escape_string($_POST['auditory']);
-					$begin_time = mysql_real_escape_string($_POST['begin_time']);
-					$end_time = mysql_real_escape_string($_POST['end_time']);
+					$lec1 = mysql_real_escape_string($_POST['lec1']);
+					$aud1 = mysql_real_escape_string($_POST['aud1']);
+					$bt1 = mysql_real_escape_string($_POST['bt1']);
+					$et1 = mysql_real_escape_string($_POST['et1']);
 					$msg_success = 'true';
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
@@ -263,13 +263,13 @@ switch ($Object) {
 						`day`,
 						`subject`,
 						`type`,
-						`lecturer`,
-						`auditory`,
-						`begin_time`,
-						`end_time`
+						`lec1`,
+						`aud1`,
+						`bt1`,
+						`et1`
 						)
 						VALUES (
-						NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', '{$day}', '{$subject}', '{$type}', '{$lecturer}', '{$auditory}', '{$begin_time}', '{$end_time}'
+						NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}'
 						);") ? null : $status = false;
 					mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
 
@@ -290,23 +290,23 @@ switch ($Object) {
 					&&
 				    isset ($_POST['type_2']) && is_numeric($_POST['type_2'])
 					&&
-				    isset ($_POST['lecturer']) && $_POST['lecturer'] !== ''
+				    isset ($_POST['lec1']) && $_POST['lec1'] !== ''
 					&&
-				    isset ($_POST['auditory']) && is_numeric($_POST['auditory'])
+				    isset ($_POST['aud1']) && is_numeric($_POST['aud1'])
 					&&
-				    isset ($_POST['begin_time']) && $_POST['begin_time'] !== 'null'
+				    isset ($_POST['bt1']) && $_POST['bt1'] !== 'null'
 					&&
-				    isset ($_POST['end_time']) && $_POST['end_time'] !== 'null'
+				    isset ($_POST['et1']) && $_POST['et1'] !== 'null'
 					) {
 					$subject_id = mysql_real_escape_string($_POST['subject_id']);
 					$day_id = mysql_real_escape_string($_POST['day_id']);
 					$subject = mysql_real_escape_string($_POST['subject']);
 					$type_1 = mysql_real_escape_string($_POST['type_1']);
 					$type_2 = mysql_real_escape_string($_POST['type_2']);
-					$lecturer = mysql_real_escape_string($_POST['lecturer']);
-					$auditory = mysql_real_escape_string($_POST['auditory']);
-					$begin_time = mysql_real_escape_string($_POST['begin_time']);
-					$end_time = mysql_real_escape_string($_POST['end_time']);
+					$lec1 = mysql_real_escape_string($_POST['lec1']);
+					$aud1 = mysql_real_escape_string($_POST['aud1']);
+					$bt1 = mysql_real_escape_string($_POST['bt1']);
+					$et1 = mysql_real_escape_string($_POST['et1']);
 					$msg_success = 'true';
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
@@ -382,10 +382,10 @@ switch ($Object) {
 						`day` =  '{$day}',
 						`subject` = '{$subject}',
 						`type` =  '{$type}',
-						`lecturer` =  '{$lecturer}',
-						`auditory` =  '{$auditory}',
-						`begin_time` =  '{$begin_time}',
-						`end_time` =  '{$end_time}' WHERE `id` = {$subject_id};") ? null : $status = false;
+						`lec1` =  '{$lec1}',
+						`aud1` =  '{$aud1}',
+						`bt1` =  '{$bt1}',
+						`et1` =  '{$et1}' WHERE `id` = {$subject_id};") ? null : $status = false;
 					$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
 				} else {
 					echo '<span style="color: red;">Все параметры должны быть заданы!</span>';

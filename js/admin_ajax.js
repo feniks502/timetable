@@ -134,84 +134,171 @@ function add_subject() {
 			} else {
 				$("#info").html(data);
 			}
+			$("input[name=sg]").click(function () {
+				$(".h").slideToggle();
+			});
 			$("form[name=add_subject]").submit(function () {
-				var bth = $("input[name=bth]").val();
-				var btm = $("input[name=btm]").val();
-				if (bth !== '00' && bth !== '01' && bth !== '02' && bth !== '03' && bth !== '04'
+				var bth1 = $("input[name=bth1]").val();
+				var btm1 = $("input[name=btm1]").val();
+				if (bth1 !== '00' && bth1 !== '01' && bth1 !== '02' && bth1 !== '03' && bth1 !== '04'
 					&&
-				    bth !== '05' && bth !== '06' && bth !== '07' && bth !== '08' && bth !== '09') {
-					bth = bth * 1;
-					if (bth < 10) {
-						bth = null;
+				    bth1 !== '05' && bth1 !== '06' && bth1 !== '07' && bth1 !== '08' && bth1 !== '09') {
+					bth1 = bth1 * 1;
+					if (bth1 < 10) {
+						bth1 = null;
 					}
 				}
-				if (btm !== '00' && btm !== '01' && btm !== '02' && btm !== '03' && btm !== '04'
+				if (btm1 !== '00' && btm1 !== '01' && btm1 !== '02' && btm1 !== '03' && btm1 !== '04'
 					&&
-				    btm !== '05' && btm !== '06' && btm !== '07' && btm !== '08' && btm !== '09') {
-					btm = btm * 1;
-					if (btm < 10) {
-						btm = null;
+				    btm1 !== '05' && btm1 !== '06' && btm1 !== '07' && btm1 !== '08' && btm1 !== '09') {
+					btm1 = btm1 * 1;
+					if (btm1 < 10) {
+						btm1 = null;
 					}
 				}
-				if (bth && btm) {
-					var begin_time = bth + ':' + btm;
+				if (bth1 && btm1) {
+					var bt1 = bth1 + ':' + btm1;
 				} else {
-					var begin_time = null;
+					var bt1 = null;
 				}
 
-				var eth = $("input[name=eth]").val();
-				var etm = $("input[name=etm]").val();
-				if (eth !== '00' && eth !== '01' && eth !== '02' && eth !== '03' && eth !== '04'
+				var eth1 = $("input[name=eth1]").val();
+				var etm1 = $("input[name=etm1]").val();
+				if (eth1 !== '00' && eth1 !== '01' && eth1 !== '02' && eth1 !== '03' && eth1 !== '04'
 					&&
-				    eth !== '05' && eth !== '06' && eth !== '07' && eth !== '08' && eth !== '09') {
-					eth = eth * 1;
-					if (eth < 10) {
-						eth = null;
+				    eth1 !== '05' && eth1 !== '06' && eth1 !== '07' && eth1 !== '08' && eth1 !== '09') {
+					eth1 = eth1 * 1;
+					if (eth1 < 10) {
+						eth1 = null;
 					}
 				}
-				if (etm !== '00' && etm !== '01' && etm !== '02' && etm !== '03' && etm !== '04'
+				if (etm1 !== '00' && etm1 !== '01' && etm1 !== '02' && etm1 !== '03' && etm1 !== '04'
 					&&
-				    etm !== '05' && etm !== '06' && etm !== '07' && etm !== '08' && etm !== '09') {
-					etm = etm * 1;
-					if (etm < 10) {
-						etm = null;
+				    etm1 !== '05' && etm1 !== '06' && etm1 !== '07' && etm1 !== '08' && etm1 !== '09') {
+					etm1 = etm1 * 1;
+					if (etm1 < 10) {
+						etm1 = null;
 					}
 				}
-				if (eth && etm) {
-					var end_time = eth + ':' + etm;
+				if (eth1 && etm1) {
+					var et1 = eth1 + ':' + etm1;
 				} else {
-					var end_time = null;
+					var et1 = null;
 				}
 
-				$.ajax({
-					type: 'POST',
-					url: './handler.php',
-					data: {
-						object: 'subject',
-						action: 'add',
-						course_id: id,
-						group_id: id2,
-						day_id: $("select[name=day]").val(),
-						subject: $("input[name=subject]").val(),
-						type_1: $("select[name=type_1]").val(),
-						type_2: $("select[name=type_2]").val(),
-						lecturer: $("input[name=lecturer]").val(),
-						auditory: $("input[name=auditory]").val(),
-						begin_time: begin_time,
-						end_time: end_time
-					},
-					success: function (data) {
-						if (data == 'true') {
-							$("form select").val(null);
-							$("form input").not("[type=submit]").val(null);
-							$("#response").html('<span style="color: green; display: none;">Успешно добавлено</span>');
-							$("#response span").fadeIn(500);
-							$("#response span").fadeOut(1000);
-						} else {
-							$("#response").html(data);
+				if ($("input[name=sg]").is(':checked')) {
+					var bth2 = $("input[name=bth2]").val();
+					var btm2 = $("input[name=btm2]").val();
+					if (bth2 !== '00' && bth2 !== '02' && bth2 !== '02' && bth2 !== '03' && bth2 !== '04'
+						&&
+					    bth2 !== '05' && bth2 !== '06' && bth2 !== '07' && bth2 !== '08' && bth2 !== '09') {
+						bth2 = bth2 * 2;
+						if (bth2 < 20) {
+							bth2 = null;
 						}
 					}
-				});
+					if (btm2 !== '00' && btm2 !== '02' && btm2 !== '02' && btm2 !== '03' && btm2 !== '04'
+						&&
+					    btm2 !== '05' && btm2 !== '06' && btm2 !== '07' && btm2 !== '08' && btm2 !== '09') {
+						btm2 = btm2 * 2;
+						if (btm2 < 20) {
+							btm2 = null;
+						}
+					}
+					if (bth2 && btm2) {
+						var bt2 = bth2 + ':' + btm2;
+					} else {
+						var bt2 = null;
+					}
+	
+					var eth2 = $("input[name=eth2]").val();
+					var etm2 = $("input[name=etm2]").val();
+					if (eth2 !== '00' && eth2 !== '02' && eth2 !== '02' && eth2 !== '03' && eth2 !== '04'
+						&&
+					    eth2 !== '05' && eth2 !== '06' && eth2 !== '07' && eth2 !== '08' && eth2 !== '09') {
+						eth2 = eth2 * 2;
+						if (eth2 < 20) {
+							eth2 = null;
+						}
+					}
+					if (etm2 !== '00' && etm2 !== '02' && etm2 !== '02' && etm2 !== '03' && etm2 !== '04'
+						&&
+					    etm2 !== '05' && etm2 !== '06' && etm2 !== '07' && etm2 !== '08' && etm2 !== '09') {
+						etm2 = etm2 * 2;
+						if (etm2 < 20) {
+							etm2 = null;
+						}
+					}
+					if (eth2 && etm2) {
+						var et2 = eth2 + ':' + etm2;
+					} else {
+						var et2 = null;
+					}
+
+					$.ajax({
+						type: 'POST',
+						url: './handler.php',
+						data: {
+							object: 'subject',
+							action: 'add',
+							course_id: id,
+							group_id: id2,
+							day_id: $("select[name=day]").val(),
+							subject: $("input[name=subject]").val(),
+							type_1: $("select[name=type_1]").val(),
+							type_2: $("select[name=type_2]").val(),
+							lec1: $("input[name=lec1]").val(),
+							lec2: $("input[name=lec2]").val(),
+							aud1: $("input[name=aud1]").val(),
+							aud2: $("input[name=aud2]"),
+							bt1: bt1,
+							et1: et1,
+							bt2: bt2,
+							et2: et2
+						},
+						success: function (data) {
+							if (data == 'true') {
+								$("form select").val(null);
+								$("form input").not("[type=submit]").val(null);
+								$("#response").html('<span style="color: green; display: none;">Успешно добавлено</span>');
+								$("#response span").fadeIn(500);
+								$("#response span").fadeOut(1000);
+							} else {
+								$("#response").html(data);
+							}
+						}
+					});
+				} else {
+					$.ajax({
+						type: 'POST',
+						url: './handler.php',
+						data: {
+							object: 'subject',
+							action: 'add',
+							course_id: id,
+							group_id: id2,
+							day_id: $("select[name=day]").val(),
+							subject: $("input[name=subject]").val(),
+							type_1: $("select[name=type_1]").val(),
+							type_2: $("select[name=type_2]").val(),
+							lec1: $("input[name=lec1]").val(),
+							aud1: $("input[name=aud1]").val(),
+							bt1: bt1,
+							et1: et1
+						},
+						success: function (data) {
+							if (data == 'true') {
+								$("form select").val(null);
+								$("form input").not("[type=submit]").val(null);
+								$("#response").html('<span style="color: green; display: none;">Успешно добавлено</span>');
+								$("#response span").fadeIn(500);
+								$("#response span").fadeOut(1000);
+							} else {
+								$("#response").html(data);
+							}
+						}
+					});
+				}
 				return false;
 			});
 		}
@@ -241,52 +328,52 @@ function edit_item () {
 			success: function (data) {
 				$("#info").html(data);
 				$("form[name=edit_subject]").submit(function () {
-					var bth = $("input[name=bth]").val();
-					var btm = $("input[name=btm]").val();
-					if (bth !== '00' && bth !== '01' && bth !== '02' && bth !== '03' && bth !== '04'
+					var bth1 = $("input[name=bth1]").val();
+					var btm1 = $("input[name=btm1]").val();
+					if (bth1 !== '00' && bth1 !== '01' && bth1 !== '02' && bth1 !== '03' && bth1 !== '04'
 						&&
-					    bth !== '05' && bth !== '06' && bth !== '07' && bth !== '08' && bth !== '09') {
-						bth = bth * 1;
-						if (bth < 10) {
-							bth = null;
+					    bth1 !== '05' && bth1 !== '06' && bth1 !== '07' && bth1 !== '08' && bth1 !== '09') {
+						bth1 = bth1 * 1;
+						if (bth1 < 10) {
+							bth1 = null;
 						}
 					}
-					if (btm !== '00' && btm !== '01' && btm !== '02' && btm !== '03' && btm !== '04'
+					if (btm1 !== '00' && btm1 !== '01' && btm1 !== '02' && btm1 !== '03' && btm1 !== '04'
 						&&
-					    btm !== '05' && btm !== '06' && btm !== '07' && btm !== '08' && btm !== '09') {
-						btm = btm * 1;
-						if (btm < 10) {
-							btm = null;
+					    btm1 !== '05' && btm1 !== '06' && btm1 !== '07' && btm1 !== '08' && btm1 !== '09') {
+						btm1 = btm1 * 1;
+						if (btm1 < 10) {
+							btm1 = null;
 						}
 					}
-					if (bth && btm) {
-						var begin_time = bth + ':' + btm;
+					if (bth1 && btm1) {
+						var bt1 = bth1 + ':' + btm1;
 					} else {
-						var begin_time = null;
+						var bt1 = null;
 					}
 
-					var eth = $("input[name=eth]").val();
-					var etm = $("input[name=etm]").val();
-					if (eth !== '00' && eth !== '01' && eth !== '02' && eth !== '03' && eth !== '04'
+					var eth1 = $("input[name=eth1]").val();
+					var etm1 = $("input[name=eth1]").val();
+					if (eth1 !== '00' && eth1 !== '01' && eth1 !== '02' && eth1 !== '03' && eth1 !== '04'
 						&&
-					    eth !== '05' && eth !== '06' && eth !== '07' && eth !== '08' && eth !== '09') {
-						eth = eth * 1;
-						if (eth < 10) {
-							eth = null;
+					    eth1 !== '05' && eth1 !== '06' && eth1 !== '07' && eth1 !== '08' && eth1 !== '09') {
+						eth1 = eth1 * 1;
+						if (eth1 < 10) {
+							eth1 = null;
 						}
 					}
-					if (etm !== '00' && etm !== '01' && etm !== '02' && etm !== '03' && etm !== '04'
+					if (etm1 !== '00' && etm1 !== '01' && etm1 !== '02' && etm1 !== '03' && etm1 !== '04'
 						&&
-					    etm !== '05' && etm !== '06' && etm !== '07' && etm !== '08' && etm !== '09') {
-						etm = etm * 1;
-						if (etm < 10) {
-							etm = null;
+					    etm1 !== '05' && etm1 !== '06' && etm1 !== '07' && etm1 !== '08' && etm1 !== '09') {
+						etm1 = etm1 * 1;
+						if (etm1 < 10) {
+							etm1 = null;
 						}
 					}
-					if (eth && etm) {
-						var end_time = eth + ':' + etm;
+					if (eth1 && etm1) {
+						var et1 = eth1 + ':' + etm1;
 					} else {
-						var end_time = null;
+						var et1 = null;
 					}
 
 					$.ajax({
@@ -300,10 +387,10 @@ function edit_item () {
 							subject: $("input[name=subject]").val(),
 							type_1: $("select[name=type_1]").val(),
 							type_2: $("select[name=type_2]").val(),
-							lecturer: $("input[name=lecturer]").val(),
-							auditory: $("input[name=auditory]").val(),
-							begin_time: begin_time,
-							end_time: end_time
+							lec1: $("input[name=lec1]").val(),
+							aud1: $("input[name=aud1]").val(),
+							bt1: bt1,
+							et1: et1
 						},
 						success: function (data) {
 							if (data == 'true') {

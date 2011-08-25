@@ -19,6 +19,7 @@ table {
 	text-align: right;
 	vertical-align: top;
 	width: 140px;
+    padding-right: 1px;
 }
 
 .value{
@@ -30,6 +31,10 @@ select {
 	background: #f6f6f6;
 	border: #5f5f5f solid 1px;
 	color: #5f5f5f;
+}
+
+.h {
+    display: none;
 }
 
 textarea {
