@@ -192,16 +192,16 @@ function add_subject() {
 					if (bth2 !== '00' && bth2 !== '02' && bth2 !== '02' && bth2 !== '03' && bth2 !== '04'
 						&&
 					    bth2 !== '05' && bth2 !== '06' && bth2 !== '07' && bth2 !== '08' && bth2 !== '09') {
-						bth2 = bth2 * 2;
-						if (bth2 < 20) {
+						bth2 = bth2 * 1;
+						if (bth2 < 10) {
 							bth2 = null;
 						}
 					}
 					if (btm2 !== '00' && btm2 !== '02' && btm2 !== '02' && btm2 !== '03' && btm2 !== '04'
 						&&
 					    btm2 !== '05' && btm2 !== '06' && btm2 !== '07' && btm2 !== '08' && btm2 !== '09') {
-						btm2 = btm2 * 2;
-						if (btm2 < 20) {
+						btm2 = btm2 * 1;
+						if (btm2 < 10) {
 							btm2 = null;
 						}
 					}
@@ -210,22 +210,22 @@ function add_subject() {
 					} else {
 						var bt2 = null;
 					}
-	
+
 					var eth2 = $("input[name=eth2]").val();
 					var etm2 = $("input[name=etm2]").val();
 					if (eth2 !== '00' && eth2 !== '02' && eth2 !== '02' && eth2 !== '03' && eth2 !== '04'
 						&&
 					    eth2 !== '05' && eth2 !== '06' && eth2 !== '07' && eth2 !== '08' && eth2 !== '09') {
-						eth2 = eth2 * 2;
-						if (eth2 < 20) {
+						eth2 = eth2 * 1;
+						if (eth2 < 10) {
 							eth2 = null;
 						}
 					}
 					if (etm2 !== '00' && etm2 !== '02' && etm2 !== '02' && etm2 !== '03' && etm2 !== '04'
 						&&
 					    etm2 !== '05' && etm2 !== '06' && etm2 !== '07' && etm2 !== '08' && etm2 !== '09') {
-						etm2 = etm2 * 2;
-						if (etm2 < 20) {
+						etm2 = etm2 * 1;
+						if (etm2 < 10) {
 							etm2 = null;
 						}
 					}
@@ -247,10 +247,11 @@ function add_subject() {
 							subject: $("input[name=subject]").val(),
 							type_1: $("select[name=type_1]").val(),
 							type_2: $("select[name=type_2]").val(),
+							chk: 1,
 							lec1: $("input[name=lec1]").val(),
 							lec2: $("input[name=lec2]").val(),
 							aud1: $("input[name=aud1]").val(),
-							aud2: $("input[name=aud2]"),
+							aud2: $("input[name=aud2]").val(),
 							bt1: bt1,
 							et1: et1,
 							bt2: bt2,

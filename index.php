@@ -34,7 +34,7 @@ class Template {
 	}
 
 	public function Output(){
-		$this->Layout = empty ($this->Layout) ? 'index.html' : $this->Layout . '.html';
+		$this->Layout = empty ($this->Layout) ? 'index.html' : $this->Layout . '.twig';
 
 		$Template = $this->Twig->loadTemplate ($this->Layout);
 		$Template->display($this->layoutOptions);
