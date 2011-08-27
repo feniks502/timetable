@@ -328,6 +328,9 @@ function edit_item () {
 			},
 			success: function (data) {
 				$("#info").html(data);
+				$("input[name=sg]").click(function () {
+					$(".h").slideToggle();
+				});
 				$("form[name=edit_subject]").submit(function () {
 					var bth1 = $("input[name=bth1]").val();
 					var btm1 = $("input[name=btm1]").val();
@@ -354,7 +357,7 @@ function edit_item () {
 					}
 
 					var eth1 = $("input[name=eth1]").val();
-					var etm1 = $("input[name=eth1]").val();
+					var etm1 = $("input[name=etm1]").val();
 					if (eth1 !== '00' && eth1 !== '01' && eth1 !== '02' && eth1 !== '03' && eth1 !== '04'
 						&&
 					    eth1 !== '05' && eth1 !== '06' && eth1 !== '07' && eth1 !== '08' && eth1 !== '09') {
@@ -371,38 +374,121 @@ function edit_item () {
 							etm1 = null;
 						}
 					}
+
 					if (eth1 && etm1) {
 						var et1 = eth1 + ':' + etm1;
 					} else {
 						var et1 = null;
 					}
 
-					$.ajax({
-						type: 'POST',
-						url: './handler.php',
-						data: {
-							object: 'subject',
-							action: 'edit',
-							subject_id: id3,
-							day_id: $("select[name=day]").val(),
-							subject: $("input[name=subject]").val(),
-							type_1: $("select[name=type_1]").val(),
-							type_2: $("select[name=type_2]").val(),
-							lec1: $("input[name=lec1]").val(),
-							aud1: $("input[name=aud1]").val(),
-							bt1: bt1,
-							et1: et1
-						},
-						success: function (data) {
-							if (data == 'true') {
-								$("#response").html('<span style="color: green; display: none;">Успешно изменено</span>');
-								$("#response span").fadeIn(500);
-								$("#response span").fadeOut(1000);
-							} else {
-								$("#response").html(data);
+					if ($("input[name=sg]").is(':checked')) {
+						var bth2 = $("input[name=bth2]").val();
+						var btm2 = $("input[name=btm2]").val();
+						if (bth2 !== '00' && bth2 !== '02' && bth2 !== '02' && bth2 !== '03' && bth2 !== '04'
+							&&
+						    bth2 !== '05' && bth2 !== '06' && bth2 !== '07' && bth2 !== '08' && bth2 !== '09') {
+							bth2 = bth2 * 1;
+							if (bth2 < 10) {
+								bth2 = null;
 							}
 						}
-					});
+						if (btm2 !== '00' && btm2 !== '02' && btm2 !== '02' && btm2 !== '03' && btm2 !== '04'
+							&&
+						    btm2 !== '05' && btm2 !== '06' && btm2 !== '07' && btm2 !== '08' && btm2 !== '09') {
+							btm2 = btm2 * 1;
+							if (btm2 < 10) {
+								btm2 = null;
+							}
+						}
+						if (bth2 && btm2) {
+							var bt2 = bth2 + ':' + btm2;
+						} else {
+							var bt2 = null;
+						}
+
+						var eth2 = $("input[name=eth2]").val();
+						var etm2 = $("input[name=etm2]").val();
+						if (eth2 !== '00' && eth2 !== '02' && eth2 !== '02' && eth2 !== '03' && eth2 !== '04'
+							&&
+						    eth2 !== '05' && eth2 !== '06' && eth2 !== '07' && eth2 !== '08' && eth2 !== '09') {
+							eth2 = eth2 * 1;
+							if (eth2 < 10) {
+								eth2 = null;
+							}
+						}
+						if (etm2 !== '00' && etm2 !== '02' && etm2 !== '02' && etm2 !== '03' && etm2 !== '04'
+							&&
+						    etm2 !== '05' && etm2 !== '06' && etm2 !== '07' && etm2 !== '08' && etm2 !== '09') {
+							etm2 = etm2 * 1;
+							if (etm2 < 10) {
+								etm2 = null;
+							}
+						}
+						if (eth2 && etm2) {
+							var et2 = eth2 + ':' + etm2;
+						} else {
+							var et2 = null;
+						}
+
+						$.ajax({
+							type: 'POST',
+							url: './handler.php',
+							data: {
+								object: 'subject',
+								action: 'edit',
+								subject_id: id3,
+								day_id: $("select[name=day]").val(),
+								subject: $("input[name=subject]").val(),
+								type_1: $("select[name=type_1]").val(),
+								type_2: $("select[name=type_2]").val(),
+								chk: 1,
+								lec1: $("input[name=lec1]").val(),
+								lec2: $("input[name=lec2]").val(),
+								aud1: $("input[name=aud1]").val(),
+								aud2: $("input[name=aud2]").val(),
+								bt1: bt1,
+								et1: et1,
+								bt2: bt2,
+								et2: et2
+							},
+							success: function (data) {
+								if (data == 'true') {
+									$("#response").html('<span style="color: green; display: none;">Успешно изменено</span>');
+									$("#response span").fadeIn(500);
+									$("#response span").fadeOut(1000);
+								} else {
+									$("#response").html(data);
+								}
+							}
+						});
+					} else {
+						$.ajax({
+							type: 'POST',
+							url: './handler.php',
+							data: {
+								object: 'subject',
+								action: 'edit',
+								subject_id: id3,
+								day_id: $("select[name=day]").val(),
+								subject: $("input[name=subject]").val(),
+								type_1: $("select[name=type_1]").val(),
+								type_2: $("select[name=type_2]").val(),
+								lec1: $("input[name=lec1]").val(),
+								aud1: $("input[name=aud1]").val(),
+								bt1: bt1,
+								et1: et1
+							},
+							success: function (data) {
+								if (data == 'true') {
+									$("#response").html('<span style="color: green; display: none;">Успешно изменено</span>');
+									$("#response span").fadeIn(500);
+									$("#response span").fadeOut(1000);
+								} else {
+									$("#response").html(data);
+								}
+							}
+						});
+					}
 					return false;
 				});
 			}

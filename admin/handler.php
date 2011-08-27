@@ -250,51 +250,53 @@ switch ($Object) {
 
 					$type = $type_2 . ' ' .$type_1;
 
-					if (isset ($_POST['chk']) && is_numeric($_POST['chk'])
-						&&
-					    isset ($_POST['lec2']) && $_POST['lec2'] !== ''
-						&&
-					    isset ($_POST['aud2']) && is_numeric($_POST['aud2'])
-						&&
-					    isset ($_POST['bt2']) && $_POST['bt2'] !== 'null'
-						&&
-					    isset ($_POST['et2']) && $_POST['et2'] !== 'null'
-					) {
-						$lec2 = mysql_real_escape_string($_POST['lec2']);
-						$aud2 = mysql_real_escape_string($_POST['aud2']);
-						$bt2 = mysql_real_escape_string($_POST['bt2']);
-						$et2 = mysql_real_escape_string($_POST['et2']);
-						$h = 1;
- 
-						start_transaction($msg_fail);
-						$sort = mysql_fetch_assoc(mysql_query("SHOW TABLE STATUS LIKE 'subjects';"));
-						$sort = $sort['Auto_increment'];
+					if (isset ($_POST['chk']) && is_numeric($_POST['chk'])) {
+						if (isset ($_POST['lec2']) && $_POST['lec2'] !== ''
+							&&
+						    isset ($_POST['aud2']) && is_numeric($_POST['aud2'])
+							&&
+						    isset ($_POST['bt2']) && $_POST['bt2'] !== 'null'
+							&&
+						    isset ($_POST['et2']) && $_POST['et2'] !== 'null'
+						){
+							$lec2 = mysql_real_escape_string($_POST['lec2']);
+							$aud2 = mysql_real_escape_string($_POST['aud2']);
+							$bt2 = mysql_real_escape_string($_POST['bt2']);
+							$et2 = mysql_real_escape_string($_POST['et2']);
+							$h = 1;
+	 
+							start_transaction($msg_fail);
+							$sort = mysql_fetch_assoc(mysql_query("SHOW TABLE STATUS LIKE 'subjects';"));
+							$sort = $sort['Auto_increment'];
 
-						mysql_query("INSERT INTO `subjects` (
-							`id`,
-							`sort`,
-							`course_id`,
-							`group_id`,
-							`day_id`,
-							`h`,
-							`day`,
-							`subject`,
-							`type`,
-							`lec1`,
-							`aud1`,
-							`bt1`,
-							`et1`,
-							`lec2`,
-							`aud2`,
-							`bt2`,
-							`et2`
-							)
-							VALUES (
-							NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', '{$h}', '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}', '{$lec2}', '{$aud2}', '{$bt2}', '{$et2}'
-							);") ? null : $status = false;
-						mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
+							mysql_query("INSERT INTO `subjects` (
+								`id`,
+								`sort`,
+								`course_id`,
+								`group_id`,
+								`day_id`,
+								`h`,
+								`day`,
+								`subject`,
+								`type`,
+								`lec1`,
+								`aud1`,
+								`bt1`,
+								`et1`,
+								`lec2`,
+								`aud2`,
+								`bt2`,
+								`et2`
+								)
+								VALUES (
+								NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', '{$h}', '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}', '{$lec2}', '{$aud2}', '{$bt2}', '{$et2}'
+								);") ? null : $status = false;
+							mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
 
-						$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
+							$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
+						} else {
+							echo '<span style="color: red;">Все параметры должны быть заданы!</span>';
+						}
 					} else {
 						start_transaction($msg_fail);
 						$sort = mysql_fetch_assoc(mysql_query("SHOW TABLE STATUS LIKE 'subjects';"));
@@ -313,14 +315,10 @@ switch ($Object) {
 							`lec1`,
 							`aud1`,
 							`bt1`,
-							`et1`,
-							`lec2`,
-							`aud2`,
-							`bt2`,
-							`et2`
+							`et1`
 							)
 							VALUES (
-							NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', 0, '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}', 0, 0, 0, 0
+							NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', NULL, '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}'
 							);") ? null : $status = false;
 						mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
 
@@ -429,16 +427,60 @@ switch ($Object) {
 
 					$type = $type_2 . ' ' .$type_1;
 
-					start_transaction($msg_fail);
-					mysql_query("UPDATE `subjects` SET `day_id` =  '{$day_id}',
-						`day` =  '{$day}',
-						`subject` = '{$subject}',
-						`type` =  '{$type}',
-						`lec1` =  '{$lec1}',
-						`aud1` =  '{$aud1}',
-						`bt1` =  '{$bt1}',
-						`et1` =  '{$et1}' WHERE `id` = {$subject_id};") ? null : $status = false;
-					$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
+					if (isset ($_POST['chk']) && is_numeric($_POST['chk'])) {
+						if (isset ($_POST['lec2']) && $_POST['lec2'] !== ''
+							&&
+						    isset ($_POST['aud2']) && is_numeric($_POST['aud2'])
+							&&
+						    isset ($_POST['bt2']) && $_POST['bt2'] !== 'null'
+							&&
+						    isset ($_POST['et2']) && $_POST['et2'] !== 'null'
+						){
+							$lec2 = mysql_real_escape_string($_POST['lec2']);
+							$aud2 = mysql_real_escape_string($_POST['aud2']);
+							$bt2 = mysql_real_escape_string($_POST['bt2']);
+							$et2 = mysql_real_escape_string($_POST['et2']);
+							$h = 1;
+
+							start_transaction($msg_fail);
+							mysql_query("UPDATE `subjects` SET
+								`day_id` = '{$day_id}',
+								`h` = '{$h}',
+								`day` = '{$day}',
+								`subject` = '{$subject}',
+								`type` = '{$type}',
+								`lec1` = '{$lec1}',
+								`aud1` = '{$aud1}',
+								`bt1` = '{$bt1}',
+								`et1` = '{$et1}',
+								`lec2` = '{$lec2}',
+								`aud2` = '{$aud2}',
+								`bt2` = '{$bt2}',
+								`et2` = '{$et2}'
+								WHERE `id` = {$subject_id};") ? null : $status = false;
+							$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
+						} else {
+							echo '<span style="color: red;">Все параметры должны быть заданы!</span>';
+						}
+					} else {
+						start_transaction($msg_fail);
+							mysql_query("UPDATE `subjects` SET
+								`day_id` = '{$day_id}',
+								`h` = NULL,
+								`day` = '{$day}',
+								`subject` = '{$subject}',
+								`type` = '{$type}',
+								`lec1` = '{$lec1}',
+								`aud1` = '{$aud1}',
+								`bt1` = '{$bt1}',
+								`et1` = '{$et1}',
+								`lec2` = NULL,
+								`aud2` = NULL,
+								`bt2` = NULL,
+								`et2` = NULL
+								WHERE `id` = {$subject_id};") ? null : $status = false;
+							$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
+					}
 				} else {
 					echo '<span style="color: red;">Все параметры должны быть заданы!</span>';
 				}

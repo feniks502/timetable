@@ -80,7 +80,7 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 			`course_id` INT UNSIGNED NOT NULL,
 			`group_id` INT UNSIGNED NOT NULL,
 			`day_id` TINYINT( 1 ) UNSIGNED NOT NULL,
-			`h` BOOLEAN NOT NULL,
+			`h` BOOLEAN NULL,
 			`day` VARCHAR( 12 ) NOT NULL,
 			`subject` VARCHAR( 100 ) NOT NULL,
 			`type` VARCHAR( 16 ) NOT NULL,
@@ -88,10 +88,10 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 			`aud1` INT( 4 ) UNSIGNED NOT NULL,
 			`bt1` VARCHAR( 5 ) NOT NULL,
 			`et1` VARCHAR( 5 ) NOT NULL,
-			`lec2` VARCHAR( 100 ) NOT NULL,
-			`aud2` INT( 4 ) UNSIGNED NOT NULL,
-			`bt2` VARCHAR( 5 ) NOT NULL,
-			`et2` VARCHAR( 5 ) NOT NULL,
+			`lec2` VARCHAR( 100 ) NULL,
+			`aud2` INT( 4 ) UNSIGNED NULL,
+			`bt2` VARCHAR( 5 ) NULL,
+			`et2` VARCHAR( 5 ) NULL,
 			`home_work` TEXT NOT NULL
 			) ENGINE = INNODB;";
                 mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище предметов не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
