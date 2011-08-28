@@ -17,9 +17,28 @@ if (isset ($_POST['subject_id'])) {
 
 	switch ($Action) {
 		case 'load':
-			$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+			$info = mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};"));
+			
+			if ($info['h']) {
 
-			echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']}</div>
+				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+
+				echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']} // {$info['lec2']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['aud1']} // {$info['aud2']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']} // {$info['bt2']}</div>
+				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']} // {$info['et2']}</div>
+				<span style=\"color: #f00;\">Домашнее задание:</span><br>
+				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['home_work']}</textarea>
+				<div>
+				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
+				<div id=\"response\" style=\"float: right;\"></div>
+				</div>";
+
+			} else {
+
+				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+
+				echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['aud1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']}</div>
@@ -29,6 +48,7 @@ if (isset ($_POST['subject_id'])) {
 				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
 				<div id=\"response\" style=\"float: right;\"></div>
 				</div>";
+			}
 
 			break;
 
