@@ -197,7 +197,7 @@ switch ($Object) {
 				if (isset ($_POST['subject_id']) && is_numeric($_POST['subject_id'])) {
 					$subject_id = mysql_real_escape_string($_POST['subject_id']);
 
-					$row =mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};")) or exit (mysql_error());
+					$row = mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};")) or exit (mysql_error());
 
 					if ($row['h']) {
 						$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());

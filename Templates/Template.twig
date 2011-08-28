@@ -23,12 +23,23 @@
 						<a class="link" href="./?{{ item.href }}">{{ item.item }}<br></a>
 				{% if position == 'subjects' %}
 						<div class="info">
+						{% if not item.h %}
 							<div class="left">
-								<small>{{ item.begin }}-{{ item.end }}</small>
+								<small>{{ item.bt1 }}-{{ item.et1 }}</small>
 							</div>
 							<div class="right">
 								<small>{{ item.aud1 }} ауд.</small>
 							</div>
+						{% else %}
+							<div class="left">
+								<small>{{ item.bt1 }}-{{ item.et1 }}</small><br>
+								<small>{{ item.bt2 }}-{{ item.et2 }}</small>
+							</div>
+							<div class="right">
+								<small>{{ item.aud1 }} ауд.</small><br>
+								<small>{{ item.aud2 }} ауд.</small>
+							</div>
+						{% endif %}
 							<div style="clear: both;"></div>
 						</div>
 				{% endif %}

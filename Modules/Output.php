@@ -48,7 +48,7 @@ if (!isset ($_GET['id'], $_GET['id2'])) {
 	$column_id = undimention($headers, 'day_id');
 
 	//rows generation
-	$sql = "SELECT `id`, `sort`, `day_id`, `subject`, `type`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `group_id` = {$group_id} ORDER BY `sort`;";
+	$sql = "SELECT `id`, `sort`, `day_id`, `h`, `subject`, `type`, `aud1`, `bt1`, `et1`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `group_id` = {$group_id} ORDER BY `sort`;";
 	$get_rows = mysql_query($sql);
 
 	$rows = getAssoc($get_rows);
@@ -68,8 +68,12 @@ if (!isset ($_GET['id'], $_GET['id2'])) {
 					'href' => "id={$course_id}&id2={$group_id}&id3={$row['id']}",
 					'item' => $row['subject'],
 					'aud1' => $row['aud1'],
-					'begin' => $row['bt1'],
-					'end' => $row['et1'],
+					'bt1' => $row['bt1'],
+					'et1' => $row['et1'],
+					'h' => $row['h'],
+					'aud2' => $row['aud2'],
+					'bt2' => $row['bt2'],
+					'et2' => $row['et2'],
 					'sort' => "id={$course_id}&id2={$group_id}&id3={$row['id']}&id4={$row['sort']}"
 				);
 			}
