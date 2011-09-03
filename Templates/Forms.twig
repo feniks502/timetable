@@ -1,0 +1,337 @@
+{% if n == 1 %}
+
+		<form name="add_course">
+			<fieldset>
+				<legend>Добавить курс</legend>
+				<table cellspasing="1">
+					<tr>
+						<td class="key">Имя курса:</td>
+						<td class="value"><input type="text" name="course_name"></td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Добавить">
+				| <a style="color: #0b55c4;" href="./">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{# for course edit reserved
+{% elseif n = 2 %}
+#}
+
+{% elseif n == 3 %}
+
+		<form name="add_group">
+			<fieldset>
+				<legend>Добавить группу</legend>
+				<table cellspasing="1">
+					<tr>
+						<td class="key">Имя группы:</td>
+						<td class="value">
+							<input type="text" name="group_name">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Добавить">
+				| <a style="color: #0b55c4;" href="./">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{% elseif n == 4 %}
+
+		<form name="edit_group">
+			<fieldset>
+				<legend>Добавить группу</legend>
+				<table cellspasing="1">
+					<tr>
+						<td class="key">Имя группы:</td>
+						<td class="value">
+							<input type="text" name="group_name" value="{{ gn }}">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Изменить">
+				| <a style="color: #0b55c4;" href="./">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{% elseif n == 5 %}
+
+		<form name="add_subject">
+			<fieldset>
+				<legend>Добавить предмет</legend>
+				<table cellspacing="1">
+					<tr>
+						<td class="key">День:</td>
+						<td class="value">
+							<select size="7" name="day">
+								<option value="1">Понедельник</option>
+								<option value="2">Вторник</option>
+								<option value="3">Среда</option>
+								<option value="4">Четверг</option>
+								<option value="5">Пятница</option>
+								<option value="6">Суббота</option>
+								<option value="7">Воскресенье</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Тип:</td>
+						<td class="value">
+							<select size="2" name="type_1">
+								<option value="1">Лекция</option>
+								<option value="2">Семинар</option>
+								<option value="3">Факультатив</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Цикличность:</td>
+						<td class="value">
+							<select size="3" name="type_2">
+								<option value="1">Простая</option>
+								<option value="2">Нечетная</option>
+								<option value="3">Четная</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">По подгруппам:</td>
+						<td class="value">
+							<input type="checkbox" name="sg">
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Преподаватель:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="lec1"><br><div class="h">
+							<input type="text" size="50" maxlength="50" name="lec2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Аудитория №:</td>
+						<td class="value">
+							<input type="text" size="4" maxlength="4" name="aud1"><br><div class="h">
+							<input type="text" size="4" maxlength="4" name="aud2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Начало:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="bth1"> : <input type="text" size="2" maxlength="2" name="btm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="bth2"> : <input type="text" size="2" maxlength="2" name="btm2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Окончание:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="eth1"> : <input type="text" size="2" maxlength="2" name="etm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="eth2"> : <input type="text" size="2" maxlength="2" name="etm2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Предмет:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="subject">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Добавить">
+				| <a style="color: #0b55c4;" href="#" onclick="window.location.reload()">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{% elseif n == 6 %}
+
+		<form name="edit_subject">
+			<fieldset>
+				<legend>Редактировать предмет</legend>
+				<table cellspacing="1">
+					<tr>
+						<td class="key">День:</td>
+						<td class="value">
+							<select size="7" name="day">
+								<option value="1" {% if row.day_id == 1 %}selected{% endif %}>Понедельник</option>
+								<option value="2" {% if row.day_id == 2 %}selected{% endif %}>Вторник</option>
+								<option value="3" {% if row.day_id == 3 %}selected{% endif %}>Среда</option>
+								<option value="4" {% if row.day_id == 4 %}selected{% endif %}>Четверг</option>
+								<option value="5" {% if row.day_id == 5 %}selected{% endif %}>Пятница</option>
+								<option value="6" {% if row.day_id == 6 %}selected{% endif %}>Суббота</option>
+								<option value="7" {% if row.day_id == 7 %}selected{% endif %}>Воскресенье</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Тип:</td>
+						<td class="value">
+							<select size="2" name="type_1">
+								<option value="1" {% if type.1 == 'lecture' %}selected{% endif %}>Лекция</option>
+								<option value="2" {% if type.1 == 'seminar' %}selected{% endif %}>Семинар</option>
+								<option value="3" {% if type.1 == 'elective' %}selected{% endif %}>Факультатив</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Цикличность:</td>
+						<td class="value">
+							<select size="3" name="type_2">
+								<option value="1" {% if row.type.0 == 'simple' %}selected{% endif %}>Простая</option>
+								<option value="2" {% if row.type.0 == 'odd' %}selected{% endif %}>Нечетная</option>
+								<option value="3" {% if row.type.0 == 'even' %}selected{% endif %}>Четная</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">По подгруппам:</td>
+						<td class="value">
+							<input type="checkbox" name="sg" checked>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Преподаватель:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="50" maxlength="50" name="lec2" value="{{ row.lec2 }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Аудитория №:</td>
+						<td class="value">
+							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><div class="h" style="display: block;">
+							<input type="text" size="4" maxlength="4" name="aud2" value="{{ row.aud2 }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Начало:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="2" maxlength="2" name="bth2" value="{{ row.bt2.0 }}"> : <input type="text" size="2" maxlength="2" name="btm2" value="{{ row.bt2.1 }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Окончание:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="2" maxlength="2" name="eth2" value="{{ row.et2.0 }}"> : <input type="text" size="2" maxlength="2" name="etm2" value="{{ row.et2.1 }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Предмет:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="subject" value="{{ row.subject }}">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Изменить">
+				| <a style="color: #0b55c4;" href="#" onclick="window.location.reload()">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{% elseif n == 7 %}
+
+		<form name="edit_subject">
+			<fieldset>
+				<legend>Редактировать предмет</legend>
+				<table cellspacing="1">
+						<tr>
+							<td class="key">День:</td>
+						<td class="value">
+							<select size="7" name="day">
+								<option value="1" {% if row.day_id == 1 %}selected{% endif %}>Понедельник</option>
+								<option value="2" {% if row.day_id == 2 %}selected{% endif %}>Вторник</option>
+								<option value="3" {% if row.day_id == 3 %}selected{% endif %}>Среда</option>
+								<option value="4" {% if row.day_id == 4 %}selected{% endif %}>Четверг</option>
+								<option value="5" {% if row.day_id == 5 %}selected{% endif %}>Пятница</option>
+								<option value="6" {% if row.day_id == 6 %}selected{% endif %}>Суббота</option>
+								<option value="7" {% if row.day_id == 7 %}selected{% endif %}>Воскресенье</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Тип:</td>
+						<td class="value">
+							<select size="2" name="type_1">
+								<option value="1" {% if row.type.1 == 'lecture' %}selected{% endif %}>Лекция</option>
+								<option value="2" {% if row.type.1 == 'seminar' %}selected{% endif %}>Семинар</option>
+								<option value="3"{% if row.type.1 == 'elective' %}selected{% endif %}>Факультатив</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Цикличность:</td>
+						<td class="value">
+							<select size="3" name="type_2">
+								<option value="1" {% if row.type.0 == 'simple' %}selected{% endif %}>Простая</option>
+								<option value="2" {% if row.type.0 == 'odd' %}selected{% endif %}>Нечетная</option>
+								<option value="3" {% if row.type.0 == 'even' %}selected{% endif %}>Четная</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">По подгруппам:</td>
+						<td class="value">
+							<input type="checkbox" name="sg">
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Преподаватель:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="h">
+							<input type="text" size="50" maxlength="50" name="lec2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Аудитория №:</td>
+						<td class="value">
+							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><br><div class="h">
+							<input type="text" size="4" maxlength="4" name="aud2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Начало:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="bth2"> : <input type="text" size="2" maxlength="2" name="btm2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Окончание:</td>
+						<td class="value">
+							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="eth2"> : <input type="text" size="2" maxlength="2" name="etm2"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="key">Предмет:</td>
+						<td class="value">
+							<input type="text" size="50" maxlength="50" name="subject" value="{{ row.subject }}">
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div style="margin-left: 10px; margin-right: 10px;">
+				<input style="padding: 5px;" type="submit" value="Изменить">
+				| <a style="color: #0b55c4;" href="#" onclick="window.location.reload()">Назад</a>
+				<div id="response" style="float: right;"></div>
+			</div>
+		</form>
+
+{% else %}
+
+		<span style="color: red;">Параметры не прошли проверку...</span>
+
+{% endif %}

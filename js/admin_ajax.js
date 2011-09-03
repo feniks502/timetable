@@ -18,8 +18,7 @@ function add_course() {
 		type: 'POST',
 		url: './forms.php',
 		data: {
-			object: 'course',
-			action: 'add'
+			action: 1
 		},
 		success: function (data) {
 			$("#info").html(data);
@@ -57,8 +56,7 @@ function add_group() {
 		type: 'POST',
 		url: './forms.php',
 		data: {
-			object: 'group',
-			action: 'add'
+			action: 3
 		},
 		success: function (data) {
 			$("#info").html(data);
@@ -101,8 +99,7 @@ function add_subject() {
 		type: 'POST',
 		url: './forms.php',
 		data: {
-			object: 'subject',
-			action: 'add'
+			action: 5
 		},
 		success: function (data) {
 			if ($(e).is(".item")) {
@@ -322,8 +319,7 @@ function edit_item () {
 			type: 'POST',
 			url: './forms.php',
 			data: {
-				object: 'subject',
-				action: 'edit',
+				action: 6,
 				subject_id: id3
 			},
 			success: function (data) {
@@ -499,8 +495,7 @@ function edit_item () {
 			type: 'POST',
 			url: './forms.php',
 			data: {
-				object: 'group',
-				action: 'edit',
+				action: 4,
 				group_id: id2
 			},
 			success: function (data) {
