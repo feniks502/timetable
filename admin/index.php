@@ -48,7 +48,7 @@ $Template->setLayout('Admin');
 $Template->setOptions('columns', $columns);
 $Template->setOptions('position', $position);
 if ($position == 'subjects') {
-	$Template->setOptions('group_id', $group_id);
+	$Template->setOptions('gid', $gid);
 }
 $Template->setOptions('copyright', $copyright);
 $Template->Output();

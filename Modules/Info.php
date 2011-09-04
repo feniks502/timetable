@@ -21,14 +21,14 @@ if (isset ($_POST['subject_id'])) {
 			
 			if ($info['h']) {
 
-				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2`, `hwk` FROM `subjects` WHERE `id`={$subject_id};"));
 
 				echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']} // {$info['lec2']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['aud1']} // {$info['aud2']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']} // {$info['bt2']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']} // {$info['et2']}</div>
 				<span style=\"color: #f00;\">Домашнее задание:</span><br>
-				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['home_work']}</textarea>
+				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
 				<div>
 				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
 				<div id=\"response\" style=\"float: right;\"></div>
@@ -36,14 +36,14 @@ if (isset ($_POST['subject_id'])) {
 
 			} else {
 
-				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `home_work` FROM `subjects` WHERE `id`={$subject_id};"));
+				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `hwk` FROM `subjects` WHERE `id`={$subject_id};"));
 
 				echo "<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Преподаватель:</strong> {$info['lec1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Аудитория №:</strong> {$info['aud1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']}</div>
 				<span style=\"color: #f00;\">Домашнее задание:</span><br>
-				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['home_work']}</textarea>
+				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
 				<div>
 				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
 				<div id=\"response\" style=\"float: right;\"></div>
@@ -53,13 +53,13 @@ if (isset ($_POST['subject_id'])) {
 			break;
 
 		case 'add_hw':
-			$home_work = mysql_real_escape_string($_POST['home_work']);
+			$hwk = mysql_real_escape_string($_POST['hwk']);
 			$msg_success = 'true';
 			$msg_fail = '<span style="color: red;">Ошибка!</span>';
 			$status = true;
 			
 			start_transaction($msg_fail);
-			mysql_query("UPDATE `subjects` SET `home_work` = '{$home_work}' WHERE `id` ={$subject_id};") ? null : $status = false;
+			mysql_query("UPDATE `subjects` SET `hwk` = '{$hwk}' WHERE `id` ={$subject_id};") ? null : $status = false;
 
 			$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
 			break;

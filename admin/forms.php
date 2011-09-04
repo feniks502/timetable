@@ -70,14 +70,14 @@ switch ($Action) {
 
 	case 4:
 //group edit
-		if (isset ($_POST['group_id']) && is_numeric($_POST['group_id'])) {
-			$group_id = mysql_real_escape_string($_POST['group_id']);
+		if (isset ($_POST['gid']) && is_numeric($_POST['gid'])) {
+			$gid = mysql_real_escape_string($_POST['gid']);
 
-			$group_name = mysql_fetch_row(mysql_query("SELECT `group_name` FROM `groups` WHERE `id` = {$group_id};")) or exit(mysql_error());
-			$group_name = $group_name[0];
+			$gnm = mysql_fetch_row(mysql_query("SELECT `gnm` FROM `groups` WHERE `id` = {$gid};")) or exit(mysql_error());
+			$gnm = $gnm[0];
 
 			$Template->setOptions('n', 4);
-			$Template->setOptions('gn', $group_name);
+			$Template->setOptions('gn', $gnm);
 			$Template->Output();
 		}
 		break;
@@ -93,10 +93,10 @@ switch ($Action) {
 		if (isset ($_POST['subject_id']) && is_numeric($_POST['subject_id'])) {
 			$subject_id = mysql_real_escape_string($_POST['subject_id']);
 
-			$row = mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};")) or exit (mysql_error());
+			$row = mysql_fetch_assoc(mysql_query("SELECT `sg` FROM `subjects` WHERE `id` = {$subject_id};")) or exit (mysql_error());
 
-			if ($row['h']) {
-				$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
+			if ($row['sg']) {
+				$row = mysql_fetch_assoc(mysql_query("SELECT `did`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
 
 				$row['type'] = explode(' ', $row['type']);
 				$row['bt1'] = explode(':', $row['bt1']);
@@ -108,7 +108,7 @@ switch ($Action) {
 				$Template->setOptions('row', $row);
 				$Template->Output();
 			} else {
-				$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
+				$row = mysql_fetch_assoc(mysql_query("SELECT `did`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
 
 				$row['type'] = explode(' ', $row['type']);
 				$row['bt1'] = explode(':', $row['bt1']);
@@ -130,11 +130,11 @@ switch ($Action) {
 				break;
 
 			case 'edit':
-				if (isset ($_POST['group_id']) && is_numeric($_POST['group_id'])) {
-					$group_id = mysql_real_escape_string($_POST['group_id']);
+				if (isset ($_POST['gid']) && is_numeric($_POST['gid'])) {
+					$gid = mysql_real_escape_string($_POST['gid']);
 
-					$group_name = mysql_fetch_row(mysql_query("SELECT `group_name` FROM `groups` WHERE `id` = {$group_id};")) or exit(mysql_error());
-					$group_name = $group_name[0];
+					$gnm = mysql_fetch_row(mysql_query("SELECT `gnm` FROM `groups` WHERE `id` = {$gid};")) or exit(mysql_error());
+					$gnm = $gnm[0];
 				} else {
 					echo '<span style="color: red;">Параметры не прошли проверку...</span>';
 				}
@@ -156,7 +156,7 @@ switch ($Action) {
 					$row = mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};")) or exit (mysql_error());
 
 					if ($row['h']) {
-						$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
+						$row = mysql_fetch_assoc(mysql_query("SELECT `did`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
 
 						$type = explode(' ', $row['type']);
 						$bt1 = explode(':', $row['bt1']);
@@ -164,7 +164,7 @@ switch ($Action) {
 						$bt2 = explode(':', $row['bt2']);
 						$et2 = explode(':', $row['et2']);
 					} else {
-						$row = mysql_fetch_assoc(mysql_query("SELECT `day_id`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
+						$row = mysql_fetch_assoc(mysql_query("SELECT `did`, `subject`, `type`, `lec1`, `aud1`, `bt1`, `et1` FROM `subjects` WHERE `id` = {$subject_id};")) or exit(mysql_error());
 
 						$type = explode(' ', $row['type']);
 						$bt1 = explode(':', $row['bt1']);

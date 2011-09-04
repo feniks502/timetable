@@ -29,11 +29,11 @@ function add_course() {
 					data: {
 						object: 'course',
 						action: 'add',
-						course_name: $("input[name=course_name]").val()
+						cnm: $("input[name=cnm]").val()
 					},
 					success: function (data) {
 						if (data == 'true') {
-							$("input[name=course_name]").val(null);
+							$("input[name=cnm]").val(null);
 							$("#response").html('<span style="color: green; display: none;">Успешно добавлено</span>');
 							$("#response span").fadeIn(500);
 							$("#response span").fadeOut(1000);
@@ -67,12 +67,12 @@ function add_group() {
 					data: {
 						object: 'group',
 						action: 'add',
-						course_id: id,
-						group_name: $("input[name=group_name]").val()
+						cid: id,
+						gnm: $("input[name=gnm]").val()
 					},
 					success: function (data) {
 						if (data == 'true') {
-							$("input[name=group_name]").val(null);
+							$("input[name=gnm]").val(null);
 							$("#response").html('<span style="color: green; display: none;">Успешно добавлено</span>');
 							$("#response span").fadeIn(500);
 							$("#response span").fadeOut(1000);
@@ -132,7 +132,7 @@ function add_subject() {
 				$("#info").html(data);
 			}
 			$("input[name=sg]").click(function () {
-				$(".h").slideToggle();
+				$(".sg").slideToggle();
 			});
 			$("form[name=add_subject]").submit(function () {
 				var bth1 = $("input[name=bth1]").val();
@@ -238,9 +238,9 @@ function add_subject() {
 						data: {
 							object: 'subject',
 							action: 'add',
-							course_id: id,
-							group_id: id2,
-							day_id: $("select[name=day]").val(),
+							cid: id,
+							gid: id2,
+							did: $("select[name=day]").val(),
 							subject: $("input[name=subject]").val(),
 							type_1: $("select[name=type_1]").val(),
 							type_2: $("select[name=type_2]").val(),
@@ -273,9 +273,9 @@ function add_subject() {
 						data: {
 							object: 'subject',
 							action: 'add',
-							course_id: id,
-							group_id: id2,
-							day_id: $("select[name=day]").val(),
+							cid: id,
+							gid: id2,
+							did: $("select[name=day]").val(),
 							subject: $("input[name=subject]").val(),
 							type_1: $("select[name=type_1]").val(),
 							type_2: $("select[name=type_2]").val(),
@@ -325,7 +325,7 @@ function edit_item () {
 			success: function (data) {
 				$("#info").html(data);
 				$("input[name=sg]").click(function () {
-					$(".h").slideToggle();
+					$(".sg").slideToggle();
 				});
 				$("form[name=edit_subject]").submit(function () {
 					var bth1 = $("input[name=bth1]").val();
@@ -433,7 +433,7 @@ function edit_item () {
 								object: 'subject',
 								action: 'edit',
 								subject_id: id3,
-								day_id: $("select[name=day]").val(),
+								did: $("select[name=day]").val(),
 								subject: $("input[name=subject]").val(),
 								type_1: $("select[name=type_1]").val(),
 								type_2: $("select[name=type_2]").val(),
@@ -465,7 +465,7 @@ function edit_item () {
 								object: 'subject',
 								action: 'edit',
 								subject_id: id3,
-								day_id: $("select[name=day]").val(),
+								did: $("select[name=day]").val(),
 								subject: $("input[name=subject]").val(),
 								type_1: $("select[name=type_1]").val(),
 								type_2: $("select[name=type_2]").val(),
@@ -496,7 +496,7 @@ function edit_item () {
 			url: './forms.php',
 			data: {
 				action: 4,
-				group_id: id2
+				gid: id2
 			},
 			success: function (data) {
 				$("#info").html(data);
@@ -507,8 +507,8 @@ function edit_item () {
 						data: {
 							object: 'group',
 							action: 'edit',
-							group_id: id2,
-							group_name: $("input[name=group_name]").val()
+							gid: id2,
+							gnm: $("input[name=gnm]").val()
 						},
 						success: function (data) {
 							if (data == 'true') {
@@ -566,7 +566,7 @@ function delete_item() {
 			data: {
 				object: 'group',
 				action: 'delete',
-				group_id: id2
+				gid: id2
 			},
 			success: function (data) {
 				if (data == 'true') {
@@ -770,7 +770,7 @@ function add_hw() {
 			data: {
 				action: 'add_hw',
 				subject_id: sub_id,
-				home_work: $("textarea").val()
+				hwk: $("textarea").val()
 			},
 			success: function (data) {
 				if (data == 'true') {

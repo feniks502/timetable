@@ -18,17 +18,17 @@ if (!isset ($_GET['id'], $_GET['id2'])) {
 	foreach	($column_id as $id) {
 		foreach ($headers as $header) {
 			if ($header['id'] == $id) {
-				$columns[$id]['header'] = $header['course_name'];
+				$columns[$id]['header'] = $header['cnm'];
 			}
 		}
 	}
 	foreach ($column_id as $id) {
 		foreach ($rows as $row) {
-			if ($row['course_id'] == $id) {
+			if ($row['cid'] == $id) {
 				$columns[$id]['items'][] = array(
 					'class' => 'simple',
 					'href' => "id={$id}&id2={$row['id']}",
-					'item' => $row['group_name'],
+					'item' => $row['gnm'],
 					'sort' => "id={$id}&id2={$row['id']}&id4={$row['sort']}"
 				);
 			}
@@ -37,44 +37,44 @@ if (!isset ($_GET['id'], $_GET['id2'])) {
 } else {
 	$position = 'subjects';
 
-	$course_id = mysql_real_escape_string($_GET['id']);
-	$group_id = mysql_real_escape_string($_GET['id2']);
+	$cid = mysql_real_escape_string($_GET['id']);
+	$gid = mysql_real_escape_string($_GET['id2']);
 
 	//columns generation
-	$sql = "SELECT DISTINCT `day_id`, `day` FROM `subjects` WHERE `group_id` = {$group_id} ORDER BY `day_id`;";
+	$sql = "SELECT DISTINCT `did`, `day` FROM `subjects` WHERE `gid` = {$gid} ORDER BY `did`;";
 	$get_columns = mysql_query($sql);
 
 	$headers = getAssoc($get_columns);
-	$column_id = undimention($headers, 'day_id');
+	$column_id = undimention($headers, 'did');
 
 	//rows generation
-	$sql = "SELECT `id`, `sort`, `day_id`, `h`, `subject`, `type`, `aud1`, `bt1`, `et1`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `group_id` = {$group_id} ORDER BY `sort`;";
+	$sql = "SELECT `id`, `sort`, `did`, `sg`, `subject`, `type`, `aud1`, `bt1`, `et1`, `aud2`, `bt2`, `et2` FROM `subjects` WHERE `gid` = {$gid} ORDER BY `sort`;";
 	$get_rows = mysql_query($sql);
 
 	$rows = getAssoc($get_rows);
 
 	foreach	($column_id as $id) {
 		foreach ($headers as $header) {
-			if ($header['day_id'] == $id) {
+			if ($header['did'] == $id) {
 				$columns[$id]['header'] = $header['day'];
 			}
 		}
 	}
 	foreach ($column_id as $id) {
 		foreach ($rows as $row) {
-			if ($row['day_id'] == $id) {
+			if ($row['did'] == $id) {
 				$columns[$id]['items'][] = array(
 					'class' => $row['type'],
-					'href' => "id={$course_id}&id2={$group_id}&id3={$row['id']}",
+					'href' => "id={$cid}&id2={$gid}&id3={$row['id']}",
 					'item' => $row['subject'],
 					'aud1' => $row['aud1'],
 					'bt1' => $row['bt1'],
 					'et1' => $row['et1'],
-					'h' => $row['h'],
+					'sg' => $row['sg'],
 					'aud2' => $row['aud2'],
 					'bt2' => $row['bt2'],
 					'et2' => $row['et2'],
-					'sort' => "id={$course_id}&id2={$group_id}&id3={$row['id']}&id4={$row['sort']}"
+					'sort' => "id={$cid}&id2={$gid}&id3={$row['id']}&id4={$row['sort']}"
 				);
 			}
 		}

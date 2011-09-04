@@ -6,7 +6,7 @@
 				<table cellspasing="1">
 					<tr>
 						<td class="key">Имя курса:</td>
-						<td class="value"><input type="text" name="course_name"></td>
+						<td class="value"><input type="text" name="cnm"></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -30,7 +30,7 @@
 					<tr>
 						<td class="key">Имя группы:</td>
 						<td class="value">
-							<input type="text" name="group_name">
+							<input type="text" name="gnm">
 						</td>
 					</tr>
 				</table>
@@ -51,7 +51,7 @@
 					<tr>
 						<td class="key">Имя группы:</td>
 						<td class="value">
-							<input type="text" name="group_name" value="{{ gn }}">
+							<input type="text" name="gnm" value="{{ gn }}">
 						</td>
 					</tr>
 				</table>
@@ -112,28 +112,28 @@
 					<tr>
 						<td class="key">Преподаватель:</td>
 						<td class="value">
-							<input type="text" size="50" maxlength="50" name="lec1"><br><div class="h">
+							<input type="text" size="50" maxlength="50" name="lec1"><br><div class="sg">
 							<input type="text" size="50" maxlength="50" name="lec2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Аудитория №:</td>
 						<td class="value">
-							<input type="text" size="4" maxlength="4" name="aud1"><br><div class="h">
+							<input type="text" size="4" maxlength="4" name="aud1"><br><div class="sg">
 							<input type="text" size="4" maxlength="4" name="aud2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Начало:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="bth1"> : <input type="text" size="2" maxlength="2" name="btm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="bth1"> : <input type="text" size="2" maxlength="2" name="btm1"><br><div class="sg">
 							<input type="text" size="2" maxlength="2" name="bth2"> : <input type="text" size="2" maxlength="2" name="btm2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Окончание:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="eth1"> : <input type="text" size="2" maxlength="2" name="etm1"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="eth1"> : <input type="text" size="2" maxlength="2" name="etm1"><br><div class="sg">
 							<input type="text" size="2" maxlength="2" name="eth2"> : <input type="text" size="2" maxlength="2" name="etm2"></div>
 						</td>
 					</tr>
@@ -162,13 +162,13 @@
 						<td class="key">День:</td>
 						<td class="value">
 							<select size="7" name="day">
-								<option value="1" {% if row.day_id == 1 %}selected{% endif %}>Понедельник</option>
-								<option value="2" {% if row.day_id == 2 %}selected{% endif %}>Вторник</option>
-								<option value="3" {% if row.day_id == 3 %}selected{% endif %}>Среда</option>
-								<option value="4" {% if row.day_id == 4 %}selected{% endif %}>Четверг</option>
-								<option value="5" {% if row.day_id == 5 %}selected{% endif %}>Пятница</option>
-								<option value="6" {% if row.day_id == 6 %}selected{% endif %}>Суббота</option>
-								<option value="7" {% if row.day_id == 7 %}selected{% endif %}>Воскресенье</option>
+								<option value="1" {% if row.did == 1 %}selected{% endif %}>Понедельник</option>
+								<option value="2" {% if row.did == 2 %}selected{% endif %}>Вторник</option>
+								<option value="3" {% if row.did == 3 %}selected{% endif %}>Среда</option>
+								<option value="4" {% if row.did == 4 %}selected{% endif %}>Четверг</option>
+								<option value="5" {% if row.did == 5 %}selected{% endif %}>Пятница</option>
+								<option value="6" {% if row.did == 6 %}selected{% endif %}>Суббота</option>
+								<option value="7" {% if row.did == 7 %}selected{% endif %}>Воскресенье</option>
 							</select>
 						</td>
 					</tr>
@@ -201,28 +201,28 @@
 					<tr>
 						<td class="key">Преподаватель:</td>
 						<td class="value">
-							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="sg" style="display: block;">
 							<input type="text" size="50" maxlength="50" name="lec2" value="{{ row.lec2 }}"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Аудитория №:</td>
 						<td class="value">
-							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><div class="h" style="display: block;">
+							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><div class="sg" style="display: block;">
 							<input type="text" size="4" maxlength="4" name="aud2" value="{{ row.aud2 }}"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Начало:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="sg" style="display: block;">
 							<input type="text" size="2" maxlength="2" name="bth2" value="{{ row.bt2.0 }}"> : <input type="text" size="2" maxlength="2" name="btm2" value="{{ row.bt2.1 }}"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Окончание:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="h" style="display: block;">
+							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="sg" style="display: block;">
 							<input type="text" size="2" maxlength="2" name="eth2" value="{{ row.et2.0 }}"> : <input type="text" size="2" maxlength="2" name="etm2" value="{{ row.et2.1 }}"></div>
 						</td>
 					</tr>
@@ -251,13 +251,13 @@
 							<td class="key">День:</td>
 						<td class="value">
 							<select size="7" name="day">
-								<option value="1" {% if row.day_id == 1 %}selected{% endif %}>Понедельник</option>
-								<option value="2" {% if row.day_id == 2 %}selected{% endif %}>Вторник</option>
-								<option value="3" {% if row.day_id == 3 %}selected{% endif %}>Среда</option>
-								<option value="4" {% if row.day_id == 4 %}selected{% endif %}>Четверг</option>
-								<option value="5" {% if row.day_id == 5 %}selected{% endif %}>Пятница</option>
-								<option value="6" {% if row.day_id == 6 %}selected{% endif %}>Суббота</option>
-								<option value="7" {% if row.day_id == 7 %}selected{% endif %}>Воскресенье</option>
+								<option value="1" {% if row.did == 1 %}selected{% endif %}>Понедельник</option>
+								<option value="2" {% if row.did == 2 %}selected{% endif %}>Вторник</option>
+								<option value="3" {% if row.did == 3 %}selected{% endif %}>Среда</option>
+								<option value="4" {% if row.did == 4 %}selected{% endif %}>Четверг</option>
+								<option value="5" {% if row.did == 5 %}selected{% endif %}>Пятница</option>
+								<option value="6" {% if row.did == 6 %}selected{% endif %}>Суббота</option>
+								<option value="7" {% if row.did == 7 %}selected{% endif %}>Воскресенье</option>
 							</select>
 						</td>
 					</tr>
@@ -290,28 +290,28 @@
 					<tr>
 						<td class="key">Преподаватель:</td>
 						<td class="value">
-							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="h">
+							<input type="text" size="50" maxlength="50" name="lec1" value="{{ row.lec1 }}"><br><div class="sg">
 							<input type="text" size="50" maxlength="50" name="lec2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Аудитория №:</td>
 						<td class="value">
-							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><br><div class="h">
+							<input type="text" size="4" maxlength="4" name="aud1" value="{{ row.aud1 }}"><br><div class="sg">
 							<input type="text" size="4" maxlength="4" name="aud2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Начало:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="bth1" value="{{ row.bt1.0 }}"> : <input type="text" size="2" maxlength="2" name="btm1" value="{{ row.bt1.1 }}"><br><div class="sg">
 							<input type="text" size="2" maxlength="2" name="bth2"> : <input type="text" size="2" maxlength="2" name="btm2"></div>
 						</td>
 					</tr>
 					<tr>
 						<td class="key">Окончание:</td>
 						<td class="value">
-							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="h">
+							<input type="text" size="2" maxlength="2" name="eth1" value="{{ row.et1.0 }}"> : <input type="text" size="2" maxlength="2" name="etm1" value="{{ row.et1.1 }}"><br><div class="sg">
 							<input type="text" size="2" maxlength="2" name="eth2"> : <input type="text" size="2" maxlength="2" name="etm2"></div>
 						</td>
 					</tr>

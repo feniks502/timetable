@@ -18,8 +18,8 @@ switch ($Object) {
 
 		switch ($Action) {
 			case 'add':
-				if (isset ($_POST['course_name']) && ($_POST['course_name']) !== '') {
-					$course_name = mysql_real_escape_string($_POST['course_name']);
+				if (isset ($_POST['cnm']) && ($_POST['cnm']) !== '') {
+					$cnm = mysql_real_escape_string($_POST['cnm']);
 					$msg_success = 'true';
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
@@ -27,10 +27,10 @@ switch ($Object) {
 					start_transaction($msg_fail);
 					mysql_query("INSERT INTO `courses` (
 						`id`,
-						`course_name`
+						`cnm`
 						)
 						VALUES (
-						NULL, '{$course_name}'
+						NULL, '{$cnm}'
 						);") ? null : $status = false;
 					mysql_query('ALTER TABLE  `courses` ORDER BY  `id`;') ? null : $status = false;
 
@@ -54,12 +54,12 @@ switch ($Object) {
 
 		switch ($Action) {
 			case 'add':
-				if (isset ($_POST['course_id']) && is_numeric($_POST['course_id'])
+				if (isset ($_POST['cid']) && is_numeric($_POST['cid'])
 					&&
-				    isset ($_POST['group_name']) && ($_POST['group_name']) !== ''
+				    isset ($_POST['gnm']) && ($_POST['gnm']) !== ''
 					) {
-					$course_id = mysql_real_escape_string($_POST['course_id']);
-					$group_name = mysql_real_escape_string($_POST['group_name']);
+					$cid = mysql_real_escape_string($_POST['cid']);
+					$gnm = mysql_real_escape_string($_POST['gnm']);
 					$msg_success = 'true';
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
@@ -71,11 +71,11 @@ switch ($Object) {
 					mysql_query("INSERT INTO `groups` (
 						`id`,
 						`sort`,
-						`course_id`,
-						`group_name`
+						`cid`,
+						`gnm`
 						)
 						VALUES (
-						NULL, '{$sort}', '{$course_id}', '{$group_name}'
+						NULL, '{$sort}', '{$cid}', '{$gnm}'
 						);") ? null : $status = false;
 					mysql_query('ALTER TABLE  `groups` ORDER BY  `id`;') ? null : $status = false;
 
@@ -86,18 +86,18 @@ switch ($Object) {
 				break;
 
 			case 'edit':
-				if (isset ($_POST['group_id']) && is_numeric($_POST['group_id'])
+				if (isset ($_POST['gid']) && is_numeric($_POST['gid'])
 					&&
-				    isset ($_POST['group_name']) && ($_POST['group_name']) !== ''
+				    isset ($_POST['gnm']) && ($_POST['gnm']) !== ''
 					) {
-					$group_id = mysql_real_escape_string($_POST['group_id']);
-					$group_name = mysql_real_escape_string($_POST['group_name']);
+					$gid = mysql_real_escape_string($_POST['gid']);
+					$gnm = mysql_real_escape_string($_POST['gnm']);
 					$msg_success = 'true';
 					$msg_fail = '<span style="color: red;">Изменить не удалось!</span>';
 					$status = true;
 
 					start_transaction($msg_fail);
-					mysql_query("UPDATE `groups` SET `group_name` = '{$group_name}' WHERE `id` = {$group_id};") ? null : $status = false;
+					mysql_query("UPDATE `groups` SET `gnm` = '{$gnm}' WHERE `id` = {$gid};") ? null : $status = false;
 					$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
 				} else {
 					echo '<span style="color: red;">Поле не должно быть пустым!</span>';
@@ -105,15 +105,15 @@ switch ($Object) {
 				break;
 
 			case 'delete':
-				if (isset ($_POST['group_id']) && is_numeric($_POST['group_id'])) {
-					$group_id = mysql_real_escape_string($_POST['group_id']);
+				if (isset ($_POST['gid']) && is_numeric($_POST['gid'])) {
+					$gid = mysql_real_escape_string($_POST['gid']);
 					$msg_success = 'true';
 					$msg_fail = 'Ошибка!';
 					$status = true;
 					
 					start_transaction($msg_fail);
-					mysql_query("DELETE FROM `subjects` WHERE `group_id` = {$group_id};") ? null : $status = false;
-					mysql_query("DELETE FROM `groups` WHERE `id` = {$group_id};") ? null : $status = false;
+					mysql_query("DELETE FROM `subjects` WHERE `gid` = {$gid};") ? null : $status = false;
+					mysql_query("DELETE FROM `groups` WHERE `id` = {$gid};") ? null : $status = false;
 					$status ? commit($msg_success, $msg_fail) : rollback($msg_fail);
 				} else {
 					echo 'Неверные параметры...';
@@ -151,11 +151,11 @@ switch ($Object) {
 
 		switch ($Action) {
 			case 'add':
-				if (isset ($_POST['course_id']) && is_numeric($_POST['course_id'])
+				if (isset ($_POST['cid']) && is_numeric($_POST['cid'])
 					&&
-				    isset ($_POST['group_id']) && is_numeric($_POST['group_id'])
+				    isset ($_POST['gid']) && is_numeric($_POST['gid'])
 					&&
-				    isset ($_POST['day_id']) && is_numeric($_POST['day_id'])
+				    isset ($_POST['did']) && is_numeric($_POST['did'])
 					&&
 				    isset ($_POST['subject']) && $_POST['subject'] !== ''
 					&&
@@ -171,9 +171,9 @@ switch ($Object) {
 					&&
 				    isset ($_POST['et1']) && $_POST['et1'] !== 'null'
 					) {
-					$course_id = mysql_real_escape_string($_POST['course_id']);
-					$group_id = mysql_real_escape_string($_POST['group_id']);
-					$day_id = mysql_real_escape_string($_POST['day_id']);
+					$cid = mysql_real_escape_string($_POST['cid']);
+					$gid = mysql_real_escape_string($_POST['gid']);
+					$did = mysql_real_escape_string($_POST['did']);
 					$subject = mysql_real_escape_string($_POST['subject']);
 					$type_1 = mysql_real_escape_string($_POST['type_1']);
 					$type_2 = mysql_real_escape_string($_POST['type_2']);
@@ -185,7 +185,7 @@ switch ($Object) {
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
 
-					switch ($day_id) {
+					switch ($did) {
 						case 1:
 							$day = 'Понедельник';
 							break;
@@ -263,7 +263,7 @@ switch ($Object) {
 							$aud2 = mysql_real_escape_string($_POST['aud2']);
 							$bt2 = mysql_real_escape_string($_POST['bt2']);
 							$et2 = mysql_real_escape_string($_POST['et2']);
-							$h = 1;
+							$sg = 1;
 	 
 							start_transaction($msg_fail);
 							$sort = mysql_fetch_assoc(mysql_query("SHOW TABLE STATUS LIKE 'subjects';"));
@@ -272,10 +272,10 @@ switch ($Object) {
 							mysql_query("INSERT INTO `subjects` (
 								`id`,
 								`sort`,
-								`course_id`,
-								`group_id`,
-								`day_id`,
-								`h`,
+								`cid`,
+								`gid`,
+								`did`,
+								`sg`,
 								`day`,
 								`subject`,
 								`type`,
@@ -289,7 +289,7 @@ switch ($Object) {
 								`et2`
 								)
 								VALUES (
-								NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', '{$h}', '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}', '{$lec2}', '{$aud2}', '{$bt2}', '{$et2}'
+								NULL, '{$sort}', '{$cid}', '{$gid}', '{$did}', '{$sg}', '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}', '{$lec2}', '{$aud2}', '{$bt2}', '{$et2}'
 								);") ? null : $status = false;
 							mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
 
@@ -305,10 +305,10 @@ switch ($Object) {
 						mysql_query("INSERT INTO `subjects` (
 							`id`,
 							`sort`,
-							`course_id`,
-							`group_id`,
-							`day_id`,
-							`h`,
+							`cid`,
+							`gid`,
+							`did`,
+							`sg`,
 							`day`,
 							`subject`,
 							`type`,
@@ -318,7 +318,7 @@ switch ($Object) {
 							`et1`
 							)
 							VALUES (
-							NULL, '{$sort}', '{$course_id}', '{$group_id}', '{$day_id}', NULL, '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}'
+							NULL, '{$sort}', '{$cid}', '{$gid}', '{$did}', NULL, '{$day}', '{$subject}', '{$type}', '{$lec1}', '{$aud1}', '{$bt1}', '{$et1}'
 							);") ? null : $status = false;
 						mysql_query("ALTER TABLE  `subjects` ORDER BY  `id`;") ? null : $status = false;
 
@@ -332,7 +332,7 @@ switch ($Object) {
 			case 'edit':
 				if (isset ($_POST['subject_id']) && is_numeric($_POST['subject_id'])
 					&&
-				    isset ($_POST['day_id']) && is_numeric($_POST['day_id'])
+				    isset ($_POST['did']) && is_numeric($_POST['did'])
 					&&
 				    isset ($_POST['subject']) && $_POST['subject'] !== ''
 					&&
@@ -349,7 +349,7 @@ switch ($Object) {
 				    isset ($_POST['et1']) && $_POST['et1'] !== 'null'
 					) {
 					$subject_id = mysql_real_escape_string($_POST['subject_id']);
-					$day_id = mysql_real_escape_string($_POST['day_id']);
+					$did = mysql_real_escape_string($_POST['did']);
 					$subject = mysql_real_escape_string($_POST['subject']);
 					$type_1 = mysql_real_escape_string($_POST['type_1']);
 					$type_2 = mysql_real_escape_string($_POST['type_2']);
@@ -361,7 +361,7 @@ switch ($Object) {
 					$msg_fail = '<span style="color: red;">Добавить не удалось!</span>';
 					$status = true;
 
-					switch ($day_id) {
+					switch ($did) {
 						case 1:
 							$day = 'Понедельник';
 							break;
@@ -440,12 +440,12 @@ switch ($Object) {
 							$aud2 = mysql_real_escape_string($_POST['aud2']);
 							$bt2 = mysql_real_escape_string($_POST['bt2']);
 							$et2 = mysql_real_escape_string($_POST['et2']);
-							$h = 1;
+							$sg = 1;
 
 							start_transaction($msg_fail);
 							mysql_query("UPDATE `subjects` SET
-								`day_id` = '{$day_id}',
-								`h` = '{$h}',
+								`did` = '{$did}',
+								`sg` = '{$sg}',
 								`day` = '{$day}',
 								`subject` = '{$subject}',
 								`type` = '{$type}',
@@ -465,8 +465,8 @@ switch ($Object) {
 					} else {
 						start_transaction($msg_fail);
 							mysql_query("UPDATE `subjects` SET
-								`day_id` = '{$day_id}',
-								`h` = NULL,
+								`did` = '{$did}',
+								`sg` = NULL,
 								`day` = '{$day}',
 								`subject` = '{$subject}',
 								`type` = '{$type}',

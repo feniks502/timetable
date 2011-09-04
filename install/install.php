@@ -60,7 +60,7 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 		echo '<span style="color: green;">Создание таблиц (1 из 3)...</span><br><br>';
 		$sql = "CREATE TABLE `{$_POST['db_name']}`.`courses` (
 			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-			`course_name` VARCHAR( 50 ) NOT NULL
+			`cnm` VARCHAR( 50 ) NOT NULL
 			) ENGINE = INNODB;";
 		mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище курсов не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
 
@@ -68,8 +68,8 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 		$sql = "CREATE TABLE `{$_POST['db_name']}`.`groups` (
 			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			`sort` INT UNSIGNED NOT NULL,
-			`course_id` INT UNSIGNED NOT NULL,
-			`group_name` VARCHAR( 50 ) NOT NULL
+			`cid` INT UNSIGNED NOT NULL,
+			`gnm` VARCHAR( 50 ) NOT NULL
 			) ENGINE = INNODB;";
 		mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище групп не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
 
@@ -77,10 +77,10 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
                 $sql = "CREATE TABLE  `{$_POST['db_name']}`.`subjects` (
 			`id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 			`sort` INT UNSIGNED NOT NULL,
-			`course_id` INT UNSIGNED NOT NULL,
-			`group_id` INT UNSIGNED NOT NULL,
-			`day_id` TINYINT( 1 ) UNSIGNED NOT NULL,
-			`h` BOOLEAN NULL,
+			`cid` INT UNSIGNED NOT NULL,
+			`gid` INT UNSIGNED NOT NULL,
+			`did` TINYINT( 1 ) UNSIGNED NOT NULL,
+			`sg` BOOLEAN NULL,
 			`day` VARCHAR( 12 ) NOT NULL,
 			`subject` VARCHAR( 100 ) NOT NULL,
 			`type` VARCHAR( 16 ) NOT NULL,
@@ -92,7 +92,7 @@ if (!mysql_select_db($_POST['db_name'], $link)) {
 			`aud2` INT( 4 ) UNSIGNED NULL,
 			`bt2` VARCHAR( 5 ) NULL,
 			`et2` VARCHAR( 5 ) NULL,
-			`home_work` TEXT NOT NULL
+			`hwk` TEXT NOT NULL
 			) ENGINE = INNODB;";
                 mysql_query($sql) or exit('<span style="color: red;">Ошибка: хранилище предметов не создано!</span><br><br><span style="color: red; font-size: 24px">Выход!</span>');
 

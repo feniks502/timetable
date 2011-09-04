@@ -40,7 +40,7 @@ function add_hw() {
 		data: {
 			action: 'add_hw',
 			subject_id: sub_id,
-			home_work: $("textarea").val()
+			hwk: $("textarea").val()
 		},
 		success: function (data) {
 			if (data == 'true') {
