@@ -553,7 +553,7 @@ function delete_item() {
 			success: function (data) {
 				if (data == 'true') {
 					e.removeAttr('href').text('Удалено').css('color', '#469f45');
-					e.prevAll().removeAttr('href').fadeOut(500);
+					e.parent().prevAll().removeAttr('href').fadeOut(500);
 				} else {
 					e.html(data);
 				}
@@ -627,7 +627,7 @@ function move_up() {
 				if (data == 'true') {
 					x.next(".move_down").andSelf().attr('href', './?id=' + xid + '&id2=' + xid2 + '&id3=' + xid3 + '&id4=' + yid4);
 					y.next(".move_down").andSelf().attr('href', './?id=' + yid + '&id2=' + yid2 + '&id3=' + yid3 + '&id4=' + xid4);
-					$(".column:eq(" + pi + ") .item").removeAttr('style');
+					$(".column:eq("+ pi +") .item").removeAttr('style');
 					xel.after(yel);
 					border_remove();
 				} else {

@@ -17,9 +17,9 @@ if (isset ($_POST['subject_id'])) {
 
 	switch ($Action) {
 		case 'load':
-			$info = mysql_fetch_assoc(mysql_query("SELECT `h` FROM `subjects` WHERE `id` = {$subject_id};"));
+			$info = mysql_fetch_assoc(mysql_query("SELECT `sg` FROM `subjects` WHERE `id` = {$subject_id};"));
 			
-			if ($info['h']) {
+			if ($info['sg']) {
 
 				$info = mysql_fetch_assoc(mysql_query("SELECT `lec1`, `aud1`, `bt1`, `et1`, `lec2`, `aud2`, `bt2`, `et2`, `hwk` FROM `subjects` WHERE `id`={$subject_id};"));
 
