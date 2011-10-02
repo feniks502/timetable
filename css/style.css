@@ -3,7 +3,9 @@
 	padding: 0;
 }
 
-
+html {
+    height: 100%;
+}
 
 body {
 	background-color: #fff;
@@ -11,11 +13,13 @@ body {
 	font-family: Verdana, Trebuchet MS, sans-serif;
 	font-size: 1em;
 	line-height: 140%;
+    height: 100%;
 	overflow-x: hidden;
 }
 
 #wrap {
 	width: 1000%;
+    min-height: 90%;
 }
 
 .column {
@@ -219,9 +223,6 @@ body {
 	font-size: 10px;
 	text-align: center;
 	width: 100%;
-	position: absolute;
-	left: 0;
-	bottom: 0;
 }
 /*<------------------------------------------------------------------End Footer----------------->*/
 
