@@ -115,6 +115,7 @@ $(document).ready(function () {
 	subject_type();
 	scrollShow();
 	pos();
+	$(window).resize(pos);
 	$(".header").mouseenter(slide_menu);
 	$(".header").click(slide_menu);
 	$("#scrollLeft").click(scrollLeft);

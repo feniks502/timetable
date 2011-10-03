@@ -28,7 +28,7 @@ if (isset ($_POST['subject_id'])) {
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']} // {$info['bt2']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']} // {$info['et2']}</div>
 				<span style=\"color: #f00;\">Домашнее задание:</span><br>
-				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
+				<textarea style=\"border-color: #bbb; line-height: 150%; height: 280px; width: 98%; padding:  1%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
 				<div>
 				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
 				<div id=\"response\" style=\"float: right;\"></div>
@@ -43,7 +43,7 @@ if (isset ($_POST['subject_id'])) {
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Начало:</strong> {$info['bt1']}</div>
 				<div style=\"border-bottom: #777 dashed 1px; margin-bottom: 10px;\"><strong>Окончание:</strong> {$info['et1']}</div>
 				<span style=\"color: #f00;\">Домашнее задание:</span><br>
-				<textarea style=\"height: 280px; width: 100%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
+				<textarea style=\"border-color: #bbb; line-height: 150%; height: 280px; width: 98%; padding:  1%; margin-bottom: 5px;\">{$info['hwk']}</textarea>
 				<div>
 				<input style=\"padding: 5px; display: none; cursor: pointer;\" type=\"submit\" value=\"Сохранить\">
 				<div id=\"response\" style=\"float: right;\"></div>
