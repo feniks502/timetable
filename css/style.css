@@ -161,7 +161,16 @@ body {
 }
 
 
-
+#ic {
+	width: 100%;
+	min-height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	display: none;
+	z-index: 100;
+}
 
 #info {
 	background: #fff;
@@ -172,7 +181,6 @@ body {
 	position: absolute;
 	top: 10%;
 	left: 30%;
-	display: none;
 	z-index: 100;
 }
 /*<------------------------------------------------------------------End AJAX area-------------->*/

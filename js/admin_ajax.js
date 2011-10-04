@@ -1,13 +1,17 @@
 function ajax_area() {
-	$("body").append('<div id="shadow"></div><div id="info"></div>')
+	$("body").append('<div id="shadow"></div><div id="ic"><div id="info"></div></div>').css('overflow', 'hidden');
 	$("#shadow").fadeTo(400, 0.6);
-	$("#info").fadeIn(400);
+	$("#ic").fadeIn(400);
 
 
 
-	$("#shadow").click(function () {
+	$("#ic, #shadow").click(function () {
 		$("#shadow").remove();
-		$("#info").fadeOut();
+		$("#ic").fadeOut();
+		$("body").css({
+			overflowX: 'hidden',
+			overflowY: 'auto'
+		});
 	});
 }
 
@@ -94,7 +98,7 @@ function add_subject() {
 	var id2 = URL('id2');
 	var e = $(this);
 	ajax_area();
-	$("#info").animate({top: '3%'}, 300);
+	$("#info").animate({top: '3%'}, 400);
 	$.ajax({
 		type: 'POST',
 		url: './forms.php',
@@ -314,7 +318,7 @@ function edit_item () {
 
 	if (id && id2 && id3) {
 		ajax_area();
-		$("#info").animate({top: '3%'}, 300);
+		$("#info").animate({top: '3%'}, 400);
 		$.ajax({
 			type: 'POST',
 			url: './forms.php',
